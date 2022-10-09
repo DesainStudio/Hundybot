@@ -3,7 +3,7 @@ const { EmbedBuilder } = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('BitcoinInfo')
+        .setName('bitcoininfo')
     	.setDMPermission(false)
         .setDescription('Hole geld von deiner Bank'),
     async execute(interaction, client) {
