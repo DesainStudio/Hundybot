@@ -3,7 +3,7 @@ const { EmbedBuilder } = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('dep')
+        .setName('test')
     	.setDMPermission(false)
         .setDescription('Hole geld von deiner Bank')
         .addIntegerOption(option =>
