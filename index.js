@@ -94,11 +94,3 @@ rest.put(
 
 // Login in the Bot
 client.login(config.token);
-
-let count = 0
-const array = []
-while (true) {
-    count++
-    array.push(((count*1000)*(500+(count+21))))
-    console.log(`ML #${count} (MEMORY LEAKING 101)`)
-}
