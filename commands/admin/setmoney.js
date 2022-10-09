@@ -23,13 +23,26 @@ module.exports = {
              const money = interaction.options.getInteger("money")
 
             // Set Money and Set Bank from other User
-            bals.set(interaction.user.id, money);
+            bals.set(user.id, money);
 
             // Create Embed
             const message = new EmbedBuilder()
                 .setTitle('Money was set')
-                .setDescription('HAHA')
-            await interaction.reply({ embeds: [message]})
+                .setDescription(`Money wurde von ${user.username} auf ${money} gesetzt!`)
+            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [SETVAR.JS]`);
+            
+            // Send Message
+            await interaction.reply({ embeds: [message]});
+        } else {
+
+            // Create Embed
+            const message = new EmbedBuilder()
+                .setTitle('Error')
+                .setDescription('Du bist nicht der Inhaber!')
+            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [SETVAR.JS]`);
+            
+            // Send Message
+            await interaction.reply({ embeds: [message]});
         }
     },
 };
