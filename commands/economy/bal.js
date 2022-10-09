@@ -21,6 +21,6 @@ module.exports = {
         console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [BAL.JS]`);
         
         // Send Message
-        await interaction.reply({ embeds: [message.toJSON()], ephemeral: true });
+        await interaction.reply({ embeds: [message.toJSON()]});
     }
 }

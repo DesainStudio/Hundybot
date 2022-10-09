@@ -8,11 +8,11 @@ module.exports = {
         .setDescription('Gebe ein anderen User Geld')
         .addUserOption(option =>
             option.setName('user')
-                .setDescription('THE USER')
+                .setDescription('User')
                 .setRequired(true))
                 .addIntegerOption(option =>
                     option.setName('money')
-                        .setDescription('THE MONEY')
+                        .setDescription('Betrag')
                         .setRequired(true)),
     async execute(interaction, client) {
 

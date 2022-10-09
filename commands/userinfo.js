@@ -9,26 +9,20 @@ module.exports = {
         .setDescription('See from a User a info!')
         .addUserOption(option =>
             option.setName('user')
-                .setDescription('THE USER')
+                .setDescription('User')
                 .setRequired(true)),
     async execute(interaction, client) {
 
-        const user = interaction.options.getUser("user")
+        // Get Option User
+        const user = interaction.options.getUser('user');
 
         // Create Embed
-        let message = new EmbedBuilder()
-        		.setTitle('Userinfo')
-        		.setDescription(`User: ${user.username} \n User: ${user.id} \n Acc Create: ${user.Date}`)
+        const message = new EmbedBuilder()
+            .setTitle(`User Info von ${user.username}`)
+            .setDescription(`Info`)
+        console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [USERINFO.JS]`);
 
-                console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [USERINFO.JS]`/*[USERID] ${user.id} [CHANNELID] ${channel.id}*/);
-
-                console.log(`[SERVER] [${interaction.guild.name}] [SERVERID] [${interaction.guild.id}]`)
-
-                console.log(`[USERNAME] [${interaction.user.username}] [USERID] [${interaction.user.id}]`)
-
-                console.log(`[CHANNELNAME] [${interaction.channel.name}] [CHANNELID] [${interaction.channel.id}] [CHANNELTYPE] [${interaction.channel.type}]`)
-
-                await interaction.reply({ embeds: [message.toJSON()], fetchReply: false})
-
+        // Send Message
+        await interaction.reply({ embeds: [message]});
     },
 };
