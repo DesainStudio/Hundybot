@@ -20,7 +20,27 @@ module.exports = {
 
         // Set Bank and Money
         if (optionmoney < bankammount + 1) {
+            bank.rem(interaction.user.id, optionmoney);
+            bals.add(interaction.user.id, optionmoney);
+
+            // Create Embed
+            const message = new EmbedBuilder()
+                .setTitle('Auszahlen')
+                .setDescription(`Du hast ${optionmoney} ausgezahlt!`)
+            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [WITH.JS]`);
+
+            // Send Message
+            await interaction.reply({ embeds: [message], ephemeral: true });
+        } else {
+
+            // Create Embed
+            const message = new EmbedBuilder()
+                .setTitle('Error')
+                .setDescription('Du hast nicht genug Money um was auszuzahlen!')
+            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [WITH.JS]`)
             
+            // Send Message
+            await interaction.reply({ embeds: [message], ephemeral: true })
         }
     },
 };

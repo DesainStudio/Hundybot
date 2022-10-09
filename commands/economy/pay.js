@@ -1,7 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('@discordjs/builders');
-const { BaseClient } = require('discord.js');
-// const User = require('../schemas/UserSchema')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -18,37 +16,35 @@ module.exports = {
                         .setRequired(true)),
     async execute(interaction, client) {
 
-        const optionmoney = interaction.options.getInteger("money")
+        // Get Option User and Option Money
+        const user = interaction.options.getUser('user');
+        const optionmoney = interaction.options.getInteger('money');
 
+        // Read Money
         const money = await bals.get(interaction.user.id);
 
-        const payuser = interaction.options.getUser("user")
-
+        // Set Money and Bank
         if (optionmoney < money + 1) {
+            bals.rem(interaction.user.id, optionmoney);
+            bank.add(user.id, optionmoney);
 
-            bals.rem(interaction.user.id, optionmoney)
-
-            bals.add(payuser.id, optionmoney)
-
-            let message = new EmbedBuilder()
-        		.setTitle('Einzahlen')
-        		.setDescription(`Du hast ${payuser} ${optionmoney} gegeben!`)
-                await interaction.reply({ embeds: [message.toJSON()], fetchReply: false})
-
+            // Create Embed
+            const message = new EmbedBuilder()
+                .setTitle('Bezahlt')
+                .setDescription(`Du hast ${user.username} ${optionmoney} bezahlt!`)
+            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
+            
+            // Send Message
+            await interaction.reply({ embeds: [message]});
         } else {
-            let message = new EmbedBuilder()
-        		.setTitle('Einzahlen')
-        		.setDescription(`Du hast nicht genug Geld um es auf deine Bank zu überweisen`)
-                await interaction.reply({ embeds: [message.toJSON()], fetchReply: false})
+            // Create Embed
+            const message = new EmbedBuilder()
+                .setTitle('Error')
+                .setDescription(`Du hast nicht genug Money um ${user.username} was zu bezahlen!`)
+            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
+            
+            // Send Message
+            await interaction.reply({ embeds: [message]});
         }
-
-                console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`/*[USERID] ${user.id} [CHANNELID] ${channel.id}*/);
-
-                console.log(`[SERVER] [${interaction.guild.name}] [SERVERID] [${interaction.guild.id}]`)
-
-                console.log(`[USERNAME] [${interaction.user.username}] [USERID] [${interaction.user.id}]`)
-
-                console.log(`[CHANNELNAME] [${interaction.channel.name}] [CHANNELID] [${interaction.channel.id}] [CHANNELTYPE] [${interaction.channel.type}]`)
-
     },
 };

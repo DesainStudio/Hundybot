@@ -27,7 +27,7 @@ module.exports = {
             const message = new EmbedBuilder()
                 .setTitle('Einzahlung')
                 .setDescription(`Du hast ${optionmoney} eingezahlt!`)
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [DEP.JS]`)
+            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [DEP.JS]`);
             
             // Send Message
             await interaction.reply({ embeds: [message], ephemeral: true });
@@ -37,10 +37,10 @@ module.exports = {
             const message = new EmbedBuilder()
                 .setTitle('Error')
                 .setDescription('Du hast nicht genug Money um was einzuzahlen!')
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [DEP.JS]`)
+            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [DEP.JS]`);
             
             // Send Message
-            await interaction.reply({ embeds: [message], ephemeral: true })
+            await interaction.reply({ embeds: [message], ephemeral: true });
         }
 
     },
