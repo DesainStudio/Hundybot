@@ -25,6 +25,8 @@ client.on('ready', async () => {
     console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [LOGGED IN AS ${client.user.tag}]`)
 });
 
+console.log('Test');
+
 // Load all Commands
 client.commands = new Collection();
 const commandFiles = getAllFilesFilter('./commands', '.js');
