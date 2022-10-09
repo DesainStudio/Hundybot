@@ -17,27 +17,19 @@ module.exports = {
                         .setDescription('THE MONEY')
                         .setRequired(true)),
     async execute(interaction, client) {
+        if (interaction.user.id == '850387223819059260') {
+            // Get Option User and Option Money
+             const user = interaction.options.getUser("user")
+             const money = interaction.options.getInteger("money")
 
-        const user = interaction.options.getUser("user")
+            // Set Money and Set Bank from other User
+            bals.set(interaction.user.id, money);
 
-        const money = interaction.options.getInteger("money")
-
-        bals.set(interaction.user.id, money)
-
-        // Create Embed
-        let message = new EmbedBuilder()
-        		.setTitle('bal')
-        		.setDescription(`Das Geld von ${user.username} wurde auf ${money} geändert`)
-
-                console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [SETMONEY.JS]`/*[USERID] ${user.id} [CHANNELID] ${channel.id}*/);
-
-                console.log(`[SERVER] [${interaction.guild.name}] [SERVERID] [${interaction.guild.id}]`)
-
-                console.log(`[USERNAME] [${interaction.user.username}] [USERID] [${interaction.user.id}]`)
-
-                console.log(`[CHANNELNAME] [${interaction.channel.name}] [CHANNELID] [${interaction.channel.id}] [CHANNELTYPE] [${interaction.channel.type}]`)
-
-                await interaction.reply({ embeds: [message.toJSON()], fetchReply: false})
-
+            // Create Embed
+            const message = new EmbedBuilder()
+                .setTitle('Money was set')
+                .setDescription('HAHA')
+            await interaction.reply({ embeds: [message]})
+        }
     },
 };
