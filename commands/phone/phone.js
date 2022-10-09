@@ -20,11 +20,11 @@ module.exports = {
             // Create Embed
             const message = new EmbedBuilder()
                 .setTitle('Error')
-                .setDescription('Du bist nicht der Inhaber!')
+                .setDescription('test')
             console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PHONE.JS]`);
             
             // Send Message
-            await interaction.reply({ embeds: [message], component: [row]});
+            await interaction.reply({ embeds: [message], components: [row]});
 
     },
 };
