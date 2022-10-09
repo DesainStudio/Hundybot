@@ -1,4 +1,4 @@
-const moneySchema = require('../schemas/UserSchema');
+const moneySchema = require('../schemas/economy');
 
 exports.get = (userId) => new Promise(async ful => {
     const data = await moneySchema.findOne({ userId });

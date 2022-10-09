@@ -1,4 +1,4 @@
-const bankSchema = require('../schemas/UserSchema2');
+const bankSchema = require('../schemas/bank');
 
 exports.get = (userId) => new Promise(async ful => {
     const data = await bankSchema.findOne({ userId });

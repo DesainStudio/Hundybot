@@ -30,6 +30,8 @@ module.exports = {
                         .setRequired(true)),
     async execute(interaction, client) {
 
+        user = await client.users.fetch(interaction.user.id);
+
         const user = interaction.options.getUser('user')
 
         const sendmessage = interaction.options.getString('message')
@@ -37,7 +39,7 @@ module.exports = {
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht von: ${interaction.user.username}`)
         		.setDescription(`Du hast eine Nachricht bekommen! \n \n Inhalt: \n \n ${sendmessage}`)
-                await interaction.reply({ embeds: [message.toJSON()], fetchReply: false})
+                await user.reply({ embeds: [message.toJSON()], fetchReply: false})
 
 
 
