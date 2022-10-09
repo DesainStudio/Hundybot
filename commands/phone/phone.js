@@ -20,7 +20,7 @@ module.exports = {
             .addComponents(
                 new ButtonBuilder()
 					.setLabel('TikTok')
-                    .setCustomId('phone')
+                    .setCustomId('tiktok')
 					.setStyle(ButtonStyle.Secondary),
             )
 
