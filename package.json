@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "discord-api-types": "^0.37.11",
+    "discord.js": "^14.3.0",
+    "mongoose": "^6.6.3",
+    "node-fetch": "^3.2.10",
+    "nodemon": "^2.0.20"
+  }
+}

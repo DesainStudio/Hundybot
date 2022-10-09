@@ -1,0 +1,39 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { EmbedBuilder } = require('@discordjs/builders');
+const wait = require('node:timers/promises').setTimeout
+
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('messagecheck')
+    	.setDMPermission(false)
+        .setDescription('Message')
+        .setDescriptionLocalizations({
+            de: 'Messages'
+        }),
+    async execute(interaction) {
+
+
+        // Create Embed
+        let message = new EmbedBuilder()
+        		.setTitle('Messages')
+        		.setDescription('Messages')
+
+        // Send Correct Response
+        console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] USED COMMAND: messagecheck.js`);
+
+        console.log(`[SERVER] [${interaction.guild.name}] [SERVERID] [${interaction.guild.id}]`)
+
+        console.log(`[USERNAME] [${interaction.user.username}] [USERID] [${interaction.user.id}]`)
+
+        console.log(`[CHANNELNAME] [${interaction.channel.name}] [CHANNELID] [${interaction.channel.id}] [CHANNELTYPE] [${interaction.channel.type}]`)
+        
+        const msg = await interaction.reply({ embeds: [message.toJSON()], fetchReply: true })
+
+        let number = 1
+        while (true) {
+        await wait(5000)
+        msg.edit({ content: number.toString() })
+        number++
+        }
+    },
+};
