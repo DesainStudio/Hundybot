@@ -11,10 +11,6 @@ for (const file of buttonFiles) {
 
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand() && !interaction.isButton()) return
-
-	// Get Guild Language
-
-	console.log(interaction)
 	
 	if (interaction.isChatInputCommand()) {
 
