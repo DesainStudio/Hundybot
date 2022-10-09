@@ -15,7 +15,14 @@ module.exports = {
 					.setLabel('Facebook')
                     .setCustomId('phone')
 					.setStyle(ButtonStyle.Secondary),
-			);
+			)
+        let row1 = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+					.setLabel('TikTok')
+                    .setCustomId('phone')
+					.setStyle(ButtonStyle.Secondary),
+            )
 
             // Create Embed
             const message = new EmbedBuilder()
