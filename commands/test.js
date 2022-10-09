@@ -3,7 +3,7 @@ const { EmbedBuilder } = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('with')
+        .setName('dep')
     	.setDMPermission(false)
         .setDescription('Hole geld von deiner Bank')
         .addIntegerOption(option =>
@@ -12,15 +12,9 @@ module.exports = {
                 .setRequired(true)),
     async execute(interaction, client) {
 
-        // Get Option Money
-        const optionmoney = interaction.options.getInteger('money');
-
-        // Read Bank
-        const bankammount = await bank.get(interaction.user.id);
-
-        // Set Bank and Money
-        if (optionmoney < bankammount + 1) {
-            
+        while (true) {
+            console.log('Spam')
         }
+
     },
 };
