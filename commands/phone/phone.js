@@ -9,20 +9,18 @@ module.exports = {
         .setDescription('My Bal command'),
     async execute(interaction, client) {
 
+        // Create Buttons
         let row = new ActionRowBuilder()
 			.addComponents(
 				new ButtonBuilder()
 					.setLabel('Facebook')
                     .setCustomId('phone')
 					.setStyle(ButtonStyle.Secondary),
-			)
-        let row1 = new ActionRowBuilder()
-            .addComponents(
                 new ButtonBuilder()
 					.setLabel('TikTok')
                     .setCustomId('tiktok')
 					.setStyle(ButtonStyle.Secondary),
-            )
+			)
 
             // Create Embed
             const message = new EmbedBuilder()
@@ -31,7 +29,7 @@ module.exports = {
             console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PHONE.JS]`);
             
             // Send Message
-            await interaction.reply({ embeds: [message], components: [row], components: [row1]});
+            await interaction.reply({ embeds: [message], components: [row]});
 
     },
 };
