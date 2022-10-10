@@ -10,12 +10,14 @@ module.exports = {
 
         console.log('Phone geht')
 
+        // Create new Embed
         let message
-    
+
                 message = new EmbedBuilder()
                     .setTitle('Ttile')
                     .setDescription('dhshdjfj')
 
+                    // Edit Message
                     return interaction.update({ embeds: [message.toJSON()] }).catch((error) => {})
     }
 }
