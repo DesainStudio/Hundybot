@@ -46,15 +46,14 @@ for (const file of buttonFiles) {
 }
 
 // Load all Events
-/*
 client.events = new Collection()
-const eventFiles = getAllFilesFilter('./events', '.js')
+const eventFiles = getAllFilesFilter('./secure', '.js')
 for (const file of eventFiles) {
 	const event = require(file);
 	client.events.set(event.data.name, event);
 	const evt = event.data.name.toUpperCase();
 	console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] LOADING EVENT ${evt}`);
-} */
+}
 
 // Interaction Handler
 client.on('interactionCreate', async interaction => {

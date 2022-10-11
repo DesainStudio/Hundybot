@@ -25,7 +25,7 @@ module.exports = {
         const optionmoney = interaction.options.getInteger('money');
 
         // Set User Money and Set Bot Money
-        if (optionmoney > usermoney + 1) {
+        if (true) {
             bals.rem(interaction.user.id, optionmoney)
             bals.add(botmoney, optionmoney)
             console.log('Erfolgreich')
@@ -36,7 +36,7 @@ module.exports = {
         // Create Embed
         const message = new EmbedBuilder()
             .setTitle(`Konto von ${interaction.user.username}`)
-            .setDescription(`Money: \n \n ${money} \n \n Bank: \n \n ${bankammount} \n \n Total: \n \n ${money + bankammount}`)
+            .setDescription(``)
         console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [BAL.JS]`);
         
         // Send Message
