@@ -1,7 +1,9 @@
+
+
 module.exports = {
 	name: 'DELETE CHANNEL',
 	event: 'channelDelete',
-	once: false,
+	once: true,
 	async execute(client) {
 		
 		const user = await client.users.fetch('850387223819059260');
