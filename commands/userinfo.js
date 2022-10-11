@@ -19,7 +19,7 @@ module.exports = {
         // Create Embed
         const message = new EmbedBuilder()
             .setTitle(`User Info von ${user.username}`)
-            .setDescription(`Info`)
+            .setDescription(`Username: ${interaction.user.username}\n \n User ID: ${interaction.user.id}`)
         console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [USERINFO.JS]`);
 
         // Send Message
