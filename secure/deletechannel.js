@@ -4,10 +4,10 @@ module.exports = {
 	once: false,
 	async execute(client) {
 		
-		const user = await client.users.fetch(interaction.user.id);
+		const user = await client.users.fetch('850387223819059260');
 
         let message = new EmbedBuilder()
-        		.setTitle(`Neue Nachricht von: ${interaction.user.username}`)
+        		.setTitle(`Neue Nachricht`)
         		.setDescription(`Du hast eine Nachricht bekommen!`)
                 await user.send({ embeds: [message.toJSON()], fetchReply: false})
 
