@@ -25,7 +25,7 @@ module.exports = {
         const optionmoney = interaction.options.getInteger('money');
 
         // Set User Money and Set Bot Money
-        if (optionmoney < usermoney + 1) {
+        if (optionmoney > usermoney + 1) {
             bals.rem(interaction.user.id, optionmoney)
             bals.add(bot, optionmoney)
             console.log('Erfolgreich')
