@@ -46,9 +46,11 @@ for (const file of buttonFiles) {
 }
 
 // Load all Events
-const eventFiles = getAllFilesFilter('./secure', '.js');
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 for (const file of eventFiles) {
-	const event = require(file)
+	const filePath = path.join(eventsPath, file);
+	const event = require(filePath)
 	if (event.once) { client.once(event.event, (...args) => event.execute(...args)) } else { client.on(event.event, (...args) => event.execute(...args)) }
 	console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] LOADING EVENT ${event.name.toUpperCase()}`)
 }
