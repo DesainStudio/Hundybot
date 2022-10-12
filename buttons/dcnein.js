@@ -4,7 +4,7 @@ const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 module.exports = {
 
     data: {
-        name: 'dcja'
+        name: 'dcnein'
     },
     async execute(interaction) {
 
