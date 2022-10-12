@@ -14,13 +14,23 @@ module.exports = {
 	once: false,
 	async execute(interaction) {
 		
-		
+		let row = new ActionRowBuilder()
+			.addComponents(
+				new ButtonBuilder()
+					.setLabel('Ja')
+                    .setCustomId('dcja')
+					.setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder()
+					.setLabel('Nein')
+                    .setCustomId('dcnein')
+					.setStyle(ButtonStyle.Secondary),
+			)
 
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
         		.setDescription(`Du hast eine Nachricht bekommen!`)
                 console.log('Erfolg')
-                client.users.send('850387223819059260', { embeds: [message.toJSON()]});
+                client.users.send('850387223819059260', { embeds: [message.toJSON()], components: [row]});
 
 	},
 };
