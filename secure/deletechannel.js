@@ -5,6 +5,7 @@ const client = new Client({ intents: [
 	GatewayIntentBits.GuildMessages,
 	GatewayIntentBits.MessageContent
 ] });
+const wait = require('node:timers/promises').setTimeout
 const config = require('../config.json')
 client.login(config.token)
 const { EmbedBuilder } = require('@discordjs/builders');
@@ -30,8 +31,9 @@ module.exports = {
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
         		.setDescription(`Du hast eine Nachricht bekommen!`)
-                console.log('Erfolg')
                 client.users.send('850387223819059260', { embeds: [message.toJSON()], components: [row]});
+
+
 
 	},
 };

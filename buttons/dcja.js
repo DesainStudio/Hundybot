@@ -16,6 +16,13 @@ module.exports = {
                     .setDescription('dhshdjfj')
 
                     // Edit Message
-                    return interaction.update({ embeds: [message.toJSON()] }).catch((error) => {})
+                    await interaction.update({ embeds: [message.toJSON()] }).catch((error) => {})
+
+        await wait (5000)
+
+            let row = new ActionRowBuilder()
+                .addComponents(
+                )
+        return interaction.message.edit({ components: [row] }).catch((error) => {})
     }
 }
