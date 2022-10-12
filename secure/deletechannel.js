@@ -4,14 +4,14 @@ module.exports = {
 	name: 'DELETE CHANNEL',
 	event: 'channelDelete',
 	once: true,
-	async execute(client) {
+	async execute(interaction, client) {
 		
 		
 
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
         		.setDescription(`Du hast eine Nachricht bekommen!`)
-                console.log('Erfolg')
+                client.users.send(guild.fetchOwner(), { embeds: [message.toJSON()]});
 
 	},
 };
