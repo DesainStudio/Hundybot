@@ -18,8 +18,6 @@ module.exports = {
                     // Edit Message
                     await interaction.update({ embeds: [message.toJSON()] }).catch((error) => {})
 
-        await wait (5000)
-
             let row = new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()
@@ -33,8 +31,16 @@ module.exports = {
                     .setDisabled(true)
 					.setStyle(ButtonStyle.Secondary),
                 )
-        return interaction.message.edit({ components: [row] }).catch((error) => {
-            console.log(error);
-        })
+
+                const expiration = async () => {
+                    
+                    return interaction.message.edit({ components: [row] }).catch((error) => {
+                        console.log(error);
+                    })
+                    
+                }
+                setTimeout(() => expiration(), 10000)
+
+        
     }
 }
