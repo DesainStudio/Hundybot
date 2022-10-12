@@ -23,6 +23,8 @@ module.exports = {
             let row = new ActionRowBuilder()
                 .addComponents(
                 )
-        return interaction.message.edit({ components: [row] }).catch((error) => {})
+        return interaction.message.edit({ components: [row] }).catch((error) => {
+            console.log(error);
+        })
     }
 }
