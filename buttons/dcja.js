@@ -34,9 +34,9 @@ module.exports = {
 
                 const expiration = async () => {
                     
-                    return interaction.message.edit({ components: [row] }).catch((error) => {
+                    interaction.message.editable && (await interaction.message.edit({ components: [row] }).catch((error) => {
                         console.log(error);
-                    })
+                    }))
                     
                 }
                 setTimeout(() => expiration(), 10000)
