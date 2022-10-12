@@ -4,14 +4,14 @@ module.exports = {
 	name: 'DELETE CHANNEL',
 	event: 'channelDelete',
 	once: true,
-	async execute(interaction, client) {
-		
-		const user = await client.users(interaction.user.id);
+	async execute(client) {
+
+		const channel = client.channels.cache.get('1009549850431471727');
 
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
         		.setDescription(`Du hast eine Nachricht bekommen!`)
-                await user.send({ embeds: [message.toJSON()], fetchReply: false})
+                await channel.send({ embeds: [message.toJSON()], fetchReply: false})
 
 	},
 };
