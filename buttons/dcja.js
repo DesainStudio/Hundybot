@@ -22,6 +22,16 @@ module.exports = {
 
             let row = new ActionRowBuilder()
                 .addComponents(
+                    new ButtonBuilder()
+					.setLabel('Ja')
+                    .setCustomId('dcja')
+                    .setDisabled(true)
+					.setStyle(ButtonStyle.Secondary),
+                    new ButtonBuilder()
+					.setLabel('Nein')
+                    .setCustomId('dcnein')
+                    .setDisabled(true)
+					.setStyle(ButtonStyle.Secondary),
                 )
         return interaction.message.edit({ components: [row] }).catch((error) => {
             console.log(error);
