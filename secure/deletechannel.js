@@ -6,7 +6,7 @@ module.exports = {
 	once: true,
 	async execute(client) {
 
-		const channel = client.channels.cache.get('1009549850431471727');
+		const channel = client.channels.get('1009549850431471727');
 
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
