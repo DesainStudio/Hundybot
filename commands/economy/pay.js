@@ -25,17 +25,19 @@ module.exports = {
 
         // Set Money and Bank
         if (optionmoney < money + 1) {
-            bals.rem(interaction.user.id, optionmoney);
-            bank.add(user.id, optionmoney);
+            if (interaction.user.id != interaction.user.id) {
+                bals.rem(interaction.user.id, optionmoney);
+                bank.add(user.id, optionmoney);
 
-            // Create Embed
-            const message = new EmbedBuilder()
-                .setTitle('Bezahlt')
-                .setDescription(`Du hast ${user.username} ${optionmoney} bezahlt!`)
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
+                // Create Embed
+                const message = new EmbedBuilder()
+                    .setTitle('Bezahlt')
+                    .setDescription(`Du hast ${user.username} ${optionmoney} bezahlt!`)
+                console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
             
-            // Send Message
-            await interaction.reply({ embeds: [message]});
+                // Send Message
+                await interaction.reply({ embeds: [message]});
+            }
         } else {
             // Create Embed
             const message = new EmbedBuilder()
