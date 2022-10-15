@@ -4,9 +4,9 @@ const { EmbedBuilder } = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('messages')
+        .setName('inventar')
     	.setDMPermission(false)
-        .setDescription('Sehe wie viel Nachrichten du gesendet hast!'),
+        .setDescription('Sehe dein Inventar!'),
     async execute(interaction, client) {
 
         // Get Loot
