@@ -1,4 +1,5 @@
 const { default: mongoose } = require('mongoose');
+const config = require('./config.json');
 
 module.exports = {
 	name: 'START BOT',
