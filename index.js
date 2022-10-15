@@ -45,7 +45,7 @@ for (const file of buttonFiles) {
     console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] LOADING BUTTON ${btn}`)
 }
 
-// Load all Events
+// Load all Secure Events
 const fs = require('node:fs');
 const path = require('node:path');
 const eventsPath = path.join(__dirname, 'secure');
@@ -54,6 +54,16 @@ for (const file of eventFiles) {
 	const filePath = path.join(eventsPath, file);
 	const event = require(filePath)
 	if (event.once) { client.once(event.event, (...args) => event.execute(...args)) } else { client.on(event.event, (...args) => event.execute(...args)) }
+	console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] LOADING EVENT ${event.name.toUpperCase()}`)
+}
+
+// Load all Normal Events
+const eventsPath2 = path.join(__dirname, 'events');
+const eventFiles2 = fs.readdirSync(eventsPath2).filter(file => file.endsWith('.js'));
+for (const file of eventFiles2) {
+	const filePath = path.join(eventsPath2, file);
+	const event = require(filePath)
+	if (event.once) { client.once(event.event, (...args) => event.execute(...args))} else { client.on(event.event, (...args) => event.execute(...args)) }
 	console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] LOADING EVENT ${event.name.toUpperCase()}`)
 }
 
