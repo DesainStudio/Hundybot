@@ -6,9 +6,7 @@ module.exports = {
 	event: 'messageCreate',
 	once: false,
 	async execute(client) {
-		
-        const messagesend = message.get(user.id)
 
-        console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [TEST] [MESSAGE] [${messagesend}]`)
+        console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [TEST]`)
 	},
 };
