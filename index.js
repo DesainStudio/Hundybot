@@ -14,7 +14,7 @@ const client = new Client({ intents: [
 global.bals = require("./functions/economy");
 global.bank = require("./functions/bank");
 global.messagea = require('./functions/message');
-global.kredit = require('./functions/kredit');
+global.kredits = require('./functions/kredit');
 global.golds = require('./functions/gold');
 global.diamants = require('./functions/diamant');
 
