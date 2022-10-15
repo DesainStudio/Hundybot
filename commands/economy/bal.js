@@ -14,11 +14,11 @@ module.exports = {
         // Read Bank
         const bankammount = await bank.get(interaction.user.id);
 
-        const messagesend = await message.get(interaction.user.id);
+        const messagesend = await messagea.get(interaction.user.id);
 
         console.log('Gucke obs geht')
 
-        message.set(interaction.user.id, 1)
+        messagea.set(interaction.user.id, 1)
 
         console.log('Gucke obs geht')
 

@@ -13,7 +13,7 @@ const client = new Client({ intents: [
 // MongoDB Functions
 global.bals = require("./functions/economy");
 global.bank = require("./functions/bank");
-global.message = require('./functions/message');
+global.messagea = require('./functions/message');
 
 // Load all Commands
 client.commands = new Collection();
