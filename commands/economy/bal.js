@@ -16,7 +16,11 @@ module.exports = {
 
         const messagesend = await message.get(interaction.user.id);
 
+        console.log('Gucke obs geht')
+
         message.set(interaction.user.id, 1)
+
+        console.log('Gucke obs geht')
 
         // Create Embed
         const message = new EmbedBuilder()
