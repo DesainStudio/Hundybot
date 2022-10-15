@@ -19,7 +19,7 @@ module.exports = {
         const bankammount = await bank.get(interaction.user.id);
 
         // Set Bank and Money
-        if (optionmoney < bankammount + 1) {
+        if (optionmoney >= 0) {
             bank.rem(interaction.user.id, optionmoney);
             bals.add(interaction.user.id, optionmoney);
 
