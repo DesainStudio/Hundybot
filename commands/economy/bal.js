@@ -16,6 +16,8 @@ module.exports = {
 
         const messagesend = await message.get(interaction.user.id);
 
+        message.set(interaction.user.id, 1)
+
         // Create Embed
         const message = new EmbedBuilder()
             .setTitle(`Konto von ${interaction.user.username}`)
