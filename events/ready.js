@@ -1,3 +1,5 @@
+const { default: mongoose } = require('mongoose');
+
 module.exports = {
 	name: 'START BOT',
 	event: 'ready',
