@@ -16,12 +16,6 @@ module.exports = {
 
         const messagesend = await messagea.get(interaction.user.id);
 
-        console.log('Gucke obs geht')
-
-        messagea.set(interaction.user.id, 1)
-
-        console.log('Gucke obs geht')
-
         // Create Embed
         const message = new EmbedBuilder()
             .setTitle(`Konto von ${interaction.user.username}`)
