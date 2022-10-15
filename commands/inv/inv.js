@@ -10,7 +10,7 @@ module.exports = {
     async execute(interaction, client) {
 
         // Get Loot
-        const gold = await golds.get(interactiob.user.id);
+        const gold = await golds.get(interaction.user.id);
         const diamant = await diamants.get(interaction.user.id)
 
         // Create Embed
