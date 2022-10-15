@@ -30,9 +30,9 @@ module.exports = {
                         .setRequired(true)),
     async execute(interaction, client) {
 
-        const user = await client.users.fetch(interaction.user.id);
-
         const interactionuser = interaction.options.getUser('user')
+
+        const user = await client.users.fetch(interactionuser.id);
 
         const sendmessage = interaction.options.getString('message')
 

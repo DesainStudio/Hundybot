@@ -20,6 +20,10 @@ module.exports = {
 					.setLabel('TikTok')
                     .setCustomId('tiktok')
 					.setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder()
+                .setLabel('Instagramm')
+                .setCustomId('insta')
+                .setStyle(ButtonStyle.Secondary),
 			)
 
             // Create Embed
