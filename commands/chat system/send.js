@@ -41,6 +41,11 @@ module.exports = {
         		.setDescription(`Du hast eine Nachricht bekommen! \n \n Inhalt: \n \n ${sendmessage}`)
                 await user.send({ embeds: [message.toJSON()], fetchReply: false})
 
+        let message2 = new EmbedBuilder()
+                .setTitle('Nachricht')
+                .setDescription(`Deine Nachricht wurd an ${interactionuser} gesendet`)
+                await interaction.send({ embeds: [message2], fetchReply: false})
+
 
 
 
