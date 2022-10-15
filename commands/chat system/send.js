@@ -44,7 +44,7 @@ module.exports = {
         let message2 = new EmbedBuilder()
                 .setTitle('Nachricht')
                 .setDescription(`Deine Nachricht wurd an ${interactionuser} gesendet`)
-                await interaction.send({ embeds: [message2], fetchReply: false})
+                await interaction.reply({ embeds: [message2], fetchReply: false})
 
 
 
