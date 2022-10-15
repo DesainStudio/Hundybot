@@ -58,7 +58,7 @@ for (const file of eventFiles) {
 }
 
 // Load all Normal Events
-const eventsPath2 = path.join(__dirname, 'events');
+const eventsPath2 = path.join(__dirname, './events');
 const eventFiles2 = fs.readdirSync(eventsPath2).filter(file => file.endsWith('.js'));
 for (const file of eventFiles2) {
 	const filePath = path.join(eventsPath2, file);
