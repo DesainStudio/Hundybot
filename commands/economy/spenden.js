@@ -35,8 +35,8 @@ module.exports = {
 
         // Create Embed
         const message = new EmbedBuilder()
-            .setTitle(`Konto von ${interaction.user.username}`)
-            .setDescription(``)
+            .setTitle(`Spenden`)
+            .setDescription(`Du hast ${optionmoney} gespendet!`)
         console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [BAL.JS]`);
         
         // Send Message
