@@ -19,7 +19,7 @@ module.exports = {
         const money = await bals.get(interaction.user.id);
 
         // Set Money and Bank
-        if (optionmoney >= 0) {
+        if (money < 0) {
             bals.rem(interaction.user.id, optionmoney);
             bank.add(interaction.user.id, optionmoney);
 

@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('@discordjs/builders');
+const bank = require('../../schemas/bank');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -19,7 +20,7 @@ module.exports = {
         const bankammount = await bank.get(interaction.user.id);
 
         // Set Bank and Money
-        if (optionmoney >= 0) {
+        if (bankammount < 0) {
             bank.rem(interaction.user.id, optionmoney);
             bals.add(interaction.user.id, optionmoney);
 
