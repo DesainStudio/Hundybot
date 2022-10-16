@@ -15,15 +15,18 @@ module.exports = {
 	event: 'channelDelete',
 	once: false,
 	async execute(interaction) {
+
+		console.log(interaction)
 		
 		// Get Channel Infos
-		const channelID = interaction.name;
+		const channelNAME = interaction.name;
+		const channelID = interaction.id;
 
 		// 1031210582155731005
 
         let message = new EmbedBuilder()
-        		.setTitle(`Neue Nachricht`)
-        		.setDescription(`Du hast eine Nachricht bekommen! ${channelID}`)
+        		.setTitle(`Kanal Gelöscht`)
+        		.setDescription(`Name: ${channelNAME} \n \n ID: ${channelID} \n \n `)
                 client.users.send(interaction.guild.ownerId, { embeds: [message.toJSON()]});
 
 
