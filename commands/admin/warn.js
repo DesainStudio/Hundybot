@@ -3,9 +3,9 @@ const { EmbedBuilder } = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('pay')
+        .setName('warn')
     	.setDMPermission(false)
-        .setDescription('Gebe ein anderen User Geld')
+        .setDescription('Warne einen User')
         .addUserOption(option =>
             option.setName('user')
                 .setDescription('User')
