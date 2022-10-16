@@ -9,7 +9,7 @@ module.exports = {
 	async execute(client) {
 
 		// Get Bot Ping
-        const botping = Math.round(client.ws.ping)
+        const botping = 1
 
         // Create Embed
         let message = new EmbedBuilder()
