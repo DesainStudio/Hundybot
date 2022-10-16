@@ -15,6 +15,7 @@ module.exports = {
 	event: 'channelDelete',
 	once: false,
 	async execute(client) {
+		console.log(client)
 		
 		let row = new ActionRowBuilder()
 			.addComponents(
