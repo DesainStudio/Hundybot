@@ -17,6 +17,7 @@ global.messagea = require('./functions/message');
 global.kredits = require('./functions/kredit');
 global.golds = require('./functions/gold');
 global.diamants = require('./functions/diamant');
+global.warns = require('./functions/warn')
 
 // Load all Commands
 client.commands = new Collection();
