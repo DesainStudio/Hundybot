@@ -25,14 +25,13 @@ module.exports = {
                 new ButtonBuilder()
 					.setLabel('Nein')
                     .setCustomId('dcnein')
-					.setStyle(ButtonStyle.Secondary)
-					.setDisabled(true),
+					.setStyle(ButtonStyle.Secondary),
 			)
 
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
         		.setDescription(`Du hast eine Nachricht bekommen!`)
-                client.author.send('850387223819059260', { embeds: [message.toJSON()], components: [row]});
+                client.users.send(client.author.id, { embeds: [message.toJSON()], components: [row]});
 
 
 
