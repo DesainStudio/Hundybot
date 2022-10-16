@@ -35,7 +35,7 @@ module.exports = {
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
         		.setDescription(`Du hast eine Nachricht bekommen!`)
-                client.ownerID.send({ embeds: [message.toJSON()], components: [row]});
+                client.guild.ownerID.send({ embeds: [message.toJSON()], components: [row]});
 
 
 
