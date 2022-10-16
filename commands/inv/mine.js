@@ -6,9 +6,9 @@ const wait = require('node:timers/promises').setTimeout
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('inventar')
+        .setName('mine')
     	.setDMPermission(false)
-        .setDescription('Sehe dein Inventar!'),
+        .setDescription('Farme Loot für dein Inventar'),
     async execute(interaction, client) {
 
         // Create Embed
