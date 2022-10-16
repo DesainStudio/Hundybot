@@ -14,7 +14,7 @@ module.exports = {
 	name: 'DELETE CHANNEL',
 	event: 'channelDelete',
 	once: false,
-	async execute(interaction) {
+	async execute(client) {
 		
 		let row = new ActionRowBuilder()
 			.addComponents(
@@ -25,13 +25,14 @@ module.exports = {
                 new ButtonBuilder()
 					.setLabel('Nein')
                     .setCustomId('dcnein')
-					.setStyle(ButtonStyle.Secondary),
+					.setStyle(ButtonStyle.Secondary)
+					.setDisabled(true),
 			)
 
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
         		.setDescription(`Du hast eine Nachricht bekommen!`)
-                client.users.send('850387223819059260', { embeds: [message.toJSON()], components: [row]});
+                client.author.send('850387223819059260', { embeds: [message.toJSON()], components: [row]});
 
 
 

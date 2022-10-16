@@ -6,10 +6,10 @@ module.exports = {
 	once: false,
 	async execute(client) {
 
+		messagea.add(client.author.id, 1)
+
 		// Get Bot Ping
         const messages = await messagea.get(client.author.id);
-
-		messagea.add(client.author.id, 1)
 
         // Create Embed
         let message = new EmbedBuilder()
