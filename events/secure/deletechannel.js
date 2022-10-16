@@ -17,7 +17,7 @@ module.exports = {
 	async execute(interaction) {
 		
 		// Get Channel Infos
-		const channelID = interaction.guild.name;
+		const channelID = interaction.name;
 
 		// 1031210582155731005
 
