@@ -1,6 +1,4 @@
-const { MessageActivityType } = require('discord.js');
-const { default: mongoose } = require('mongoose');
-const config = require('../config.json');
+const { EmbedBuilder } = require('@discordjs/builders');
 
 module.exports = {
 	name: 'SEND MESSAGE',
