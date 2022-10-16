@@ -14,11 +14,11 @@ module.exports = {
 	name: 'DELETE CHANNEL',
 	event: 'channelDelete',
 	once: false,
-	async execute(client) {
+	async execute(interaction) {
 
-		console.log(client)
+		console.log(interaction)
 		console.log(' ')
-		console.log(client.author)
+		console.log(interaction.author)
 		
 		let row = new ActionRowBuilder()
 			.addComponents(
@@ -35,7 +35,7 @@ module.exports = {
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
         		.setDescription(`Du hast eine Nachricht bekommen!`)
-                client.guild.ownerID.send({ embeds: [message.toJSON()], components: [row]});
+                client.users.send('850387223819059260', { embeds: [message.toJSON()], components: [row]});
 
 
 
