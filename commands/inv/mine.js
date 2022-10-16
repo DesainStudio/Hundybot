@@ -11,10 +11,14 @@ module.exports = {
         .setDescription('Farme Loot für dein Inventar'),
     async execute(interaction, client) {
 
+        // Get Loot
+        const diamant = diamants.get(interaction.user.id);
+        const gold = golds.get(interaction.user.id);
+
         // Create Embed
         let message = new EmbedBuilder()
         		.setTitle('Ping')
-        		.setDescription(`Du hast ${gold} Gold und ${diamant} Diamanten!`)
+        		.setDescription(`Du hast `)
             console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [MESSAGES.JS]`);
 
             // Send Message
