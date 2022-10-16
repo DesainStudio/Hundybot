@@ -8,6 +8,18 @@ module.exports = {
 	once: false,
 	async execute(client) {
 
+		// Get Bot Ping
+        const botping = Math.round(client.ws.ping)
+
+        // Create Embed
+        let message = new EmbedBuilder()
+        		.setTitle('Ping')
+        		.setDescription('My ping ' + botping + ' ms')
+            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PING.JS]`);
+
+		// Send Message
+		client.reply({ content: [message] })
+
         console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [TEST]`)
 	},
 };
