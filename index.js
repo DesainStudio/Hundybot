@@ -46,6 +46,14 @@ for (const file of eventFiles) {
 	console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] LOADING EVENT ${event.name.toUpperCase()}`)
 };
 
+// Load all Events
+const eventFiles = getAllFilesFilter('./secure', '.js');
+for (const file of eventFiles) {
+	const event = require(file)
+	if (event.once) { client.once(event.event, (...args) => event.execute(...args)) } else { client.on(event.event, (...args) => event.execute(...args, client)) }
+	console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] LOADING EVENT ${event.name.toUpperCase()}`)
+};
+
 // Interaction Handler
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand() && !interaction.isButton()) return
