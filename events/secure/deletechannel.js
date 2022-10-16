@@ -6,7 +6,7 @@ const client = new Client({ intents: [
 	GatewayIntentBits.MessageContent
 ] });
 const wait = require('node:timers/promises').setTimeout
-const config = require('../config.json')
+const config = require('../../config.json')
 client.login(config.token)
 const { EmbedBuilder } = require('@discordjs/builders');
 
