@@ -19,6 +19,8 @@ module.exports = {
 		console.log(interaction)
 		console.log(' ')
 		console.log(interaction.author)
+
+        
 		
 		let row = new ActionRowBuilder()
 			.addComponents(

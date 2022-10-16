@@ -15,27 +15,16 @@ module.exports = {
 	event: 'channelDelete',
 	once: false,
 	async execute(interaction) {
-
-		console.log(interaction)
-		console.log(' ')
-		console.log(interaction.author)
 		
-		let row = new ActionRowBuilder()
-			.addComponents(
-				new ButtonBuilder()
-					.setLabel('Ja')
-                    .setCustomId('dcja')
-					.setStyle(ButtonStyle.Secondary),
-                new ButtonBuilder()
-					.setLabel('Nein')
-                    .setCustomId('dcnein')
-					.setStyle(ButtonStyle.Secondary),
-			)
+		// Get Channel Infos
+		const channelID = interaction.guild.name;
+
+		// 1031210582155731005
 
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
-        		.setDescription(`Du hast eine Nachricht bekommen!`)
-                client.users.send(interaction.guild.ownerId, { embeds: [message.toJSON()], components: [row]});
+        		.setDescription(`Du hast eine Nachricht bekommen! ${channelID}`)
+                client.users.send(interaction.guild.ownerId, { embeds: [message.toJSON()]});
 
 
 
