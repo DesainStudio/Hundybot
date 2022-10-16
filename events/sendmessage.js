@@ -6,12 +6,8 @@ module.exports = {
 	once: false,
 	async execute(client) {
 
-		console.log(client)
-		console.log(user)
-		console.log(id)
-
 		// Get Bot Ping
-        const messages = await messagea.get(client.user.id);
+        const messages = await messagea.get(client.id);
 
         // Create Embed
         let message = new EmbedBuilder()
