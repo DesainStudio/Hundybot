@@ -7,12 +7,12 @@ module.exports = {
 	async execute(client) {
 
 		// Get Bot Ping
-        const botping = 1
+        const messages = await messagea.get(client.user.id);
 
         // Create Embed
         let message = new EmbedBuilder()
         		.setTitle('Ping')
-        		.setDescription('My ping ' + botping + ' ms')
+        		.setDescription(`Du hast ${messages} gesendet`)
             console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PING.JS]`);
 
 		// Send Message
