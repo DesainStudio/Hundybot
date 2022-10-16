@@ -5,9 +5,9 @@ const { BaseClient } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('sm')
+        .setName('sb')
     	.setDMPermission(false)
-        .setDescription('Set the money from a User')
+        .setDescription('Set the bank from a User')
         .addUserOption(option =>
             option.setName('user')
                 .setDescription('THE USER')
