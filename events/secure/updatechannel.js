@@ -21,7 +21,7 @@ module.exports = {
 		console.log(interaction.author)
 
         const oldchannelname = interaction.name;
-		const newchannelname = interaction.message.channel.name;
+		const newchannelname = interaction.messages.channel.name;
 
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
