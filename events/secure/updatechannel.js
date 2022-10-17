@@ -26,7 +26,7 @@ module.exports = {
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
         		.setDescription(`Soll der Kanal wirklich Editiert werden? \n \n Old Name: ${oldchannelname} \n \n New Name: ${newchannelname}`)
-                client.users.send(interaction.guild.ownerId, { embeds: [message.toJSON()], components: [row]});
+                client.users.send(interaction.guild.ownerId, { embeds: [message.toJSON()]});
 
 
 
