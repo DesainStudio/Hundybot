@@ -5,14 +5,13 @@ const client = new Client({ intents: [
 	GatewayIntentBits.GuildMessages,
 	GatewayIntentBits.MessageContent
 ] });
-const wait = require('node:timers/promises').setTimeout
 const config = require('../../config.json')
 client.login(config.token)
 const { EmbedBuilder } = require('@discordjs/builders');
 
 module.exports = {
-	name: 'EDIT CHANNEL',
-	event: 'channelEdit',
+	name: 'DELETE CHANNEL',
+	event: 'channelDelete',
 	once: false,
 	async execute(interaction) {
 
