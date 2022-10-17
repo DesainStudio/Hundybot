@@ -28,7 +28,7 @@ module.exports = {
 
         let message = new EmbedBuilder()
         		.setTitle(`Kanal Gelöscht`)
-        		.setDescription(`Name: ${channelNAME} \n \n ID: ${channelID} \n \n NSFW: ${nsfw} \n \n Position: ${position} \n \n Topic: ${topic} \n \n RateLimitPerUser: ${ratelimitperuser}`)
+        		.setDescription(`Soll der Kanal wirklich gelöscht werden? \n \n Name: ${channelNAME} \n \n ID: ${channelID} \n \n NSFW: ${nsfw} \n \n Position: ${position} \n \n Topic: ${topic} \n \n RateLimitPerUser: ${ratelimitperuser}`)
                 client.users.send(interaction.guild.ownerId, { embeds: [message.toJSON()]});
 
 
