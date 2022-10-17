@@ -20,23 +20,12 @@ module.exports = {
 		console.log(' ')
 		console.log(interaction.author)
 
-        
-		
-		let row = new ActionRowBuilder()
-			.addComponents(
-				new ButtonBuilder()
-					.setLabel('Ja')
-                    .setCustomId('dcja')
-					.setStyle(ButtonStyle.Secondary),
-                new ButtonBuilder()
-					.setLabel('Nein')
-                    .setCustomId('dcnein')
-					.setStyle(ButtonStyle.Secondary),
-			)
+        const oldchannelname = interaction.name;
+		const newchannelname = interaction.channel.name;
 
         let message = new EmbedBuilder()
         		.setTitle(`Neue Nachricht`)
-        		.setDescription(`Du hast eine Nachricht bekommen!`)
+        		.setDescription(`Soll der Kanal wirklich Editiert werden? \n \n Old Name: ${oldchannelname} \n \n New Name: ${newchannelname}`)
                 client.users.send(interaction.guild.ownerId, { embeds: [message.toJSON()], components: [row]});
 
 
