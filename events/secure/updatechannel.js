@@ -11,8 +11,8 @@ client.login(config.token)
 const { EmbedBuilder } = require('@discordjs/builders');
 
 module.exports = {
-	name: 'EDIT CHANNEL',
-	event: 'channelEdit',
+	name: 'UPDATE CHANNEL',
+	event: 'channelUpdate',
 	once: false,
 	async execute(interaction) {
 
