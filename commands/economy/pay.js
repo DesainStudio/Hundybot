@@ -28,21 +28,29 @@ module.exports = {
         // Set Money and Bank
         if (optionmoney >= 0 && money >= optionmoney) {
             if (interaction.user.id !== user.id) {
-                let req = new Map()
-                req.set("money", optionmoney)
-                economy.rem(interaction.user.id, req);
-                req = new Map()
-                req.set("bank", optionmoney)
-                economy.add(user, req);
+                if (!user.bot) {
+                    let req = new Map()
+                    req.set("money", optionmoney)
+                    economy.rem(interaction.user.id, req);
+                    req = new Map()
+                    req.set("bank", optionmoney)
+                    economy.add(user, req);
 
-                // Create Embed
-                const message = new EmbedBuilder()
-                    .setTitle('Bezahlt')
-                    .setDescription(`Du hast ${user.username} ${optionmoney} bezahlt!`)
-                console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
+                    // Create Embed
+                    const message = new EmbedBuilder()
+                        .setTitle('Bezahlt')
+                        .setDescription(`Du hast ${user.username} ${optionmoney} bezahlt!`)
+                    console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
             
-                // Send Message
-                await interaction.reply({ embeds: [message]});
+                    // Send Message
+                    await interaction.reply({ embeds: [message]});
+                } else {
+                    const message = new EmbedBuilder()
+                        .setTitle('Bezahlt')
+                        .setDescription(`Du kannst keinen Bot was Payn!`)
+                    console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
+                    await interaction.reply({ embeds: [message]});
+                }
             } else {
                 const message = new EmbedBuilder()
                     .setTitle('Bezahlt')
