@@ -14,8 +14,8 @@ exports.get = (userId) => new Promise(async ful => {
         const output = new Map();
 
         output.set("money", data.money)
-        output.set("bank", data.money)
-        output.set("kredit", data.money)
+        output.set("bank", data.bank)
+        output.set("kredit", data.kredit)
 
         return ful(output)
     })
