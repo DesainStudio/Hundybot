@@ -23,7 +23,9 @@ module.exports = {
              const money = interaction.options.getInteger("money")
 
             // Set Money and Set Bank from other User
-            bank.set(user.id, money);
+            const req = new Map()
+            req.set("bank", bank)
+            economy.set(user.id, req);
 
             // Create Embed
             const message = new EmbedBuilder()
