@@ -27,7 +27,7 @@ module.exports = {
 
         // Set Money and Bank
         if (optionmoney >= 0 && money >= optionmoney) {
-            if (interaction.user.id !== interaction.user.id) {
+            if (interaction.user.id != interaction.user.id) {
                 let req = new Map()
                 req.set("money", optionmoney)
                 economy.rem(interaction.user.id, req);
