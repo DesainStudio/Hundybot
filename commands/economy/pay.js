@@ -48,6 +48,7 @@ module.exports = {
                     .setTitle('Bezahlt')
                     .setDescription(`Du kannst dir selber kein Geld payn!`)
                 console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
+                await interaction.reply({ embeds: [message]});
             }
         } else {
             // Create Embed
