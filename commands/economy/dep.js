@@ -20,8 +20,12 @@ module.exports = {
 
         // Set Money and Bank
         if (money < 0) {
-            bals.rem(interaction.user.id, optionmoney);
-            bank.add(interaction.user.id, optionmoney);
+            let req = new Map()
+            req.set("money", money)
+            economy.rem(user.id, req);
+            req = new Map()
+            req.set("bank", bank)
+            economy.add(user.id, req);
 
             // Create Embed
             const message = new EmbedBuilder()
