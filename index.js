@@ -58,7 +58,7 @@ client.on('interactionCreate', async interaction => {
   					.setDescription('» <:ERROR:1020414987291861022> An Error has occured while executing this Command.\nThe Error has been logged and will be fixed soon!')
 				await interaction.reply({ embeds: [message.toJSON()], ephemeral: true })
 			} catch (error) {
-				return
+				console.log(error)
 			}
 		}
 	}
@@ -74,6 +74,7 @@ client.on('interactionCreate', async interaction => {
 			}
 			return;
 		} catch (e) {
+			console.log(e)
 		}
 	}
 	
