@@ -22,10 +22,10 @@ module.exports = {
         if (money < 0) {
             let req = new Map()
             req.set("money", money)
-            economy.rem(user.id, req);
+            economy.rem(interaction.user.id, req);
             req = new Map()
             req.set("bank", bank)
-            economy.add(user.id, req);
+            economy.add(interaction.user.id, req);
 
             // Create Embed
             const message = new EmbedBuilder()
