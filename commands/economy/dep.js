@@ -15,8 +15,11 @@ module.exports = {
         // Get Option Money
         const optionmoney = interaction.options.getInteger('money');
 
+        let map = await economy.get(interaction.user.id);
+        const money = map.get("money")
+
         // Set Money and Bank
-        if (money < 0) {
+        if (money <= 0) {
             let req = new Map()
             req.set("money", optionmoney)
             economy.rem(interaction.user.id, req);
