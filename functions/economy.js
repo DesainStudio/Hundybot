@@ -40,6 +40,7 @@ exports.set = (userId, map) => {
                 kredit
             })
         }
+        data.save()
     })
 }
 
@@ -51,9 +52,9 @@ exports.add = (userId, map) => {
             if (map.has('bank')) { data.bank += map.get('bank') }
             if (map.has('kredit')) { data.kredit += map.get('kredit') }
         } else {
-            const money = map.get('money')
-            const bank = map.get('bank')
-            const kredit = map.get('kredit')
+            let money; if (map.has('money')) { money = map.get('money') } else { money = 0 }
+            let bank; if (map.has('bank')) { bank = map.get('bank') } else { bank = 0 }
+            let kredit; if (map.has('kredit')) { kredit = map.get('kredit') } else { kredit = 0 }
 
             data = new economySchema({
                 userId,
@@ -62,6 +63,7 @@ exports.add = (userId, map) => {
                 kredit
             })
         }
+        data.save()
     })
 }
 
@@ -73,9 +75,9 @@ exports.rem = (userId, map) => {
             if (map.has('bank')) { data.bank -= map.get('bank') }
             if (map.has('kredit')) { data.kredit -= map.get('kredit') }
         } else {
-            const money = map.get('money')
-            const bank = map.get('bank')
-            const kredit = map.get('kredit')
+            let money; if (map.has('money')) { money = map.get('money') } else { money = 0 }
+            let bank; if (map.has('bank')) { bank = map.get('bank') } else { bank = 0 }
+            let kredit; if (map.has('kredit')) { kredit = map.get('kredit') } else { kredit = 0 }
 
             data = new economySchema({
                 userId,
@@ -84,5 +86,6 @@ exports.rem = (userId, map) => {
                 kredit
             })
         }
+        data.save()
     })
 }
