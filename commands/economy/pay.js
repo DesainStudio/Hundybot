@@ -16,6 +16,8 @@ module.exports = {
                         .setRequired(true)),
     async execute(interaction, client) {
 
+        console.log(interaction)
+
         // Get Option User and Option Money
         const user = interaction.options.getUser('user');
         const optionmoney = interaction.options.getInteger('money');
