@@ -7,4 +7,4 @@ let Schema = new mongoose.Schema({
     kredit: Number,
 })
 
-module.exports = mongoose.model('money', Schema)
+module.exports = mongoose.model('economy', Schema)
