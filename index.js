@@ -9,6 +9,7 @@ const client = new Client({ intents: [
 	GatewayIntentBits.GuildMessages,
 	GatewayIntentBits.MessageContent
 ] });
+const { EmbedBuilder } = require('@discordjs/builders');
 
 // MongoDB Functions
 global.economy = require("./functions/economy");
@@ -57,8 +58,9 @@ client.on('interactionCreate', async interaction => {
         			.setTitle('» ERROR')
   					.setDescription('» <:ERROR:1020414987291861022> An Error has occured while executing this Command.\nThe Error has been logged and will be fixed soon!')
 				await interaction.reply({ embeds: [message.toJSON()], ephemeral: true })
+				console.error(e)
 			} catch (error) {
-				console.log(error)
+				console.error(error)
 			}
 		}
 	}
@@ -74,7 +76,7 @@ client.on('interactionCreate', async interaction => {
 			}
 			return;
 		} catch (e) {
-			console.log(e)
+			console.error(e)
 		}
 	}
 	
