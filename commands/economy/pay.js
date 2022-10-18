@@ -16,8 +16,6 @@ module.exports = {
                         .setRequired(true)),
     async execute(interaction, client) {
 
-        console.log(interaction)
-
         // Get Option User and Option Money
         const user = interaction.options.getUser('user');
         const optionmoney = interaction.options.getInteger('money');
@@ -29,7 +27,7 @@ module.exports = {
 
         // Set Money and Bank
         if (optionmoney >= 0 && money >= optionmoney) {
-            if (interaction.user.id != interaction.user.id) {
+            if (interaction.user.id !== user.id) {
                 let req = new Map()
                 req.set("money", optionmoney)
                 economy.rem(interaction.user.id, req);
