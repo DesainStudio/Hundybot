@@ -15,16 +15,13 @@ module.exports = {
         // Get Option Money
         const optionmoney = interaction.options.getInteger('money');
 
-        // Read Money
-        const money = await bals.get(interaction.user.id);
-
         // Set Money and Bank
         if (money < 0) {
             let req = new Map()
-            req.set("money", money)
+            req.set("money", optionmoney)
             economy.rem(interaction.user.id, req);
             req = new Map()
-            req.set("bank", bank)
+            req.set("bank", optionmoney)
             economy.add(interaction.user.id, req);
 
             // Create Embed
