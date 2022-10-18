@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('@discordjs/builders');
-const { BaseClient } = require('discord.js');
+const { BaseClient, resolveColor } = require('discord.js');
 // const User = require('../schemas/UserSchema')
 
 module.exports = {
@@ -23,7 +23,9 @@ module.exports = {
              const money = interaction.options.getInteger("money")
 
             // Set Money and Set Bank from other User
-            bals.set(user.id, money);
+            const req = new Map()
+            req.set("money", money)
+            economy.set(user.id, req);
 
             // Create Embed
             const message = new EmbedBuilder()

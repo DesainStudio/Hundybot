@@ -9,15 +9,17 @@ module.exports = {
     async execute(interaction, client) {
 
         // Read Money
-        const money = await bals.get(interaction.user.id);
+        let map = await economy.get(interaction.user.id);
+        const money = map.get("money")
 
         // Read Bank
-        const bankammount = await bank.get(interaction.user.id);
+        map = await economy.get(interaction.user.id);
+        const bank = map.get("bank")
 
         // Create Embed
         const message = new EmbedBuilder()
             .setTitle(`Konto von ${interaction.user.username}`)
-            .setDescription(`Money: \n \n ${money} \n \n Bank: \n \n ${bankammount} \n \n Total: \n \n ${money + bankammount}`)
+            .setDescription(`Money: \n \n ${money} \n \n Bank: \n \n ${bank} \n \n Total: \n \n ${money + bank}`)
         console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [BAL.JS]`);
         
         // Send Message

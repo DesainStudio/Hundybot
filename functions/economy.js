@@ -1,10 +1,30 @@
 const economySchema = require('../schemas/economy');
 
+exports.get = (userId) => new Promise(async ful => {
+    economySchema.findOne({ userId }, async (err, data) => {
+        if (err) throw err;
+        if (!data) {
+            const output = new Map();
+            output.set("money", 0)
+            output.set("bank", 0)
+            output.set("kredit", 0)
+
+            return ful(output)
+        }
+        const output = new Map();
+
+        output.set("money", data.money)
+        output.set("bank", data.money)
+        output.set("kredit", data.money)
+
+        return ful(output)
+    })
+})
+
 exports.set = (userId, map) => {
     economySchema.findOne({ userId }, async (err, data) => {
         if (err) throw err;
         if (data) {
-            if (map.has('userId')) { data.userId = map.get('userId'); }
             if (map.has('money')) { data.money = map.get('money') }
             if (map.has('bank')) { data.bank = map.get('bank') }
             if (map.has('kredit')) { data.kredit = map.get('kredit') }
@@ -27,7 +47,6 @@ exports.add = (userId, map) => {
     economySchema.findOne({ userId }, async (err, data) => {
         if (err) throw err;
         if (data) {
-            if (map.has('userId')) { data.userId = map.get('userId'); }
             if (map.has('money')) { data.money += map.get('money') }
             if (map.has('bank')) { data.bank += map.get('bank') }
             if (map.has('kredit')) { data.kredit += map.get('kredit') }
@@ -50,7 +69,6 @@ exports.rem = (userId, map) => {
     economySchema.findOne({ userId }, async (err, data) => {
         if (err) throw err;
         if (data) {
-            if (map.has('userId')) { data.userId = map.get('userId'); }
             if (map.has('money')) { data.money -= map.get('money') }
             if (map.has('bank')) { data.bank -= map.get('bank') }
             if (map.has('kredit')) { data.kredit -= map.get('kredit') }

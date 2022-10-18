@@ -11,12 +11,8 @@ const client = new Client({ intents: [
 ] });
 
 // MongoDB Functions
-global.bals = require("./functions/economy");
-global.bank = require("./functions/bank");
+global.economy = require("./functions/economy");
 global.messagea = require('./functions/message');
-global.kredits = require('./functions/kredit');
-global.golds = require('./functions/gold');
-global.diamants = require('./functions/diamant');
 global.warns = require('./functions/warn')
 
 // Load all Commands
