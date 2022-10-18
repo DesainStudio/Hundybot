@@ -19,7 +19,7 @@ module.exports = {
         const money = map.get("money")
 
         // Set Money and Bank
-        if (money <= 0) {
+        if (money >= 0) {
             let req = new Map()
             req.set("money", optionmoney)
             economy.rem(interaction.user.id, req);
