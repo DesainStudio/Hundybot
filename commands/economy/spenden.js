@@ -12,7 +12,7 @@ module.exports = {
                 .setRequired(true)),
     async execute(interaction, client) {
 
-        const moneyoption = interaction.options.IntegerOption('money');
+        const moneyoption = interaction.options.getInteger('money');
 
         let map = await economy.get(useroption.id);
         const money = map.get("money")
