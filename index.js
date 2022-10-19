@@ -13,9 +13,8 @@ const { EmbedBuilder } = require('@discordjs/builders');
 
 // MongoDB Functions
 global.economy = require("./functions/economy");
-global.items = require('./functions/items')
-global.messagea = require('./functions/message');
-global.warns = require('./functions/warn');
+global.items = require('./functions/items');
+global.channelfunction = require('./schemas/channel');
 
 // Load all Commands
 client.commands = new Collection();
@@ -83,6 +82,7 @@ client.on('interactionCreate', async interaction => {
 	
 });
 
+// Console Commands
 const economySchema = require('./schemas/economy');
 const stdin = process.openStdin();
 stdin.addListener("data", async function(input) {
@@ -105,7 +105,7 @@ stdin.addListener("data", async function(input) {
             economy.rem(db.userId, req);
 		}
     }
-  });
+});
 
 // Deploy Commands
 const commands = [];
