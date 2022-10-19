@@ -33,7 +33,7 @@ module.exports = {
             // Get Option User and Option Money
             const user = interaction.options.getUser("user")
             const money = interaction.options.getInteger("money")
-            const economyoption = interaction.options.getString('economy');
+            const economyoption = interaction.options.getString('Economy');
 
             // Set Money and Set Bank from other User
             const req = new Map()
