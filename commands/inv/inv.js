@@ -16,7 +16,7 @@ module.exports = {
         const gold = map.get("gold")
 
         map = await items.get(interaction.user.id);
-        const dias = map.get("diamands")
+        const dias = map.get("diamant")
 
         map = await items.get(interaction.user.id);
         const emerald = map.get("emerald")
