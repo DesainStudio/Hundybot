@@ -17,12 +17,7 @@ module.exports = {
 
 				const channel = await client.channels.cache.get(db.channelId);
 
-				if (interaction.channel.id === channel) {
-                    console.log('erfolg')
-                } else {
-                    console.log('Kein erfolg')
-                }
-
+				
             }
     }
 }

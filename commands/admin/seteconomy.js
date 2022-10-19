@@ -1,35 +1,48 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('@discordjs/builders');
-const { BaseClient } = require('discord.js');
+const { BaseClient, resolveColor } = require('discord.js');
 // const User = require('../schemas/UserSchema')
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('sb')
+        .setName('sm')
     	.setDMPermission(false)
-        .setDescription('Set the bank from a User')
+        .setDescription('Set the money from a User')
         .addUserOption(option =>
             option.setName('user')
                 .setDescription('THE USER')
-                .setRequired(true))
+                .setRequired(true)
+                )
                 .addIntegerOption(option =>
                     option.setName('money')
                         .setDescription('THE MONEY')
-                        .setRequired(true)),
+                        .setRequired(true)
+                        )
+                        .addStringOption(option => 
+                            option.setName('Money')
+                                .setDescription('economy')
+                                .setRequired(true)
+                                .addChoices(
+                                    // Setup Choices
+                                    { name: 'Money', value: 'money'},
+                                    { name: 'Bank', value: 'bank'},
+                                )
+                            ),
     async execute(interaction, client) {
         if (interaction.user.id == '850387223819059260') {
             // Get Option User and Option Money
-             const user = interaction.options.getUser("user")
-             const money = interaction.options.getInteger("money")
+            const user = interaction.options.getUser("user")
+            const money = interaction.options.getInteger("money")
+            const economyoption = interaction.options.getString('economy');
 
             // Set Money and Set Bank from other User
             const req = new Map()
-            req.set("bank", bank)
+            req.set("money", money)
             economy.set(user.id, req);
 
             // Create Embed
             const message = new EmbedBuilder()
-                .setTitle('Bank was set')
+                .setTitle('Money was set')
                 .setDescription(`Money wurde von ${user.username} auf ${money} gesetzt!`)
             console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [SETVAR.JS]`);
             
