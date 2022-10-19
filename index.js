@@ -94,7 +94,10 @@ stdin.addListener("data", async function(input) {
         // Read Kredit
         const kredite = await economySchema.find({})
 
-		console.log(kredite)
+		for (const kredit of kredite) {
+			console.log(kredit.userId)
+			console.log(kredit.kredit)
+		}
     }
   });
 
