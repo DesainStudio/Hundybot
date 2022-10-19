@@ -92,7 +92,7 @@ stdin.addListener("data", async function(input) {
     // Kredit Update
     if (args[0].toUpperCase() == 'KREDITUPDATE') {
         // Read Kredit
-        const kredite = economySchema.find({})
+        const kredite = await economySchema.find({})
 
 		console.log(kredite)
     }
