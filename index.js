@@ -91,7 +91,7 @@ stdin.addListener("data", async function(input) {
     // Kredit Update
     if (args[0].toUpperCase() == 'KREDITUPDATE') {
         // Read Kredit
-        let map = await economy.get(interaction.user.id);
+        let map = await economy.get('850387223819059260');
         const kredit = map.get("money")
 
 		console.log(kredit)
