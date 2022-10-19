@@ -6,7 +6,7 @@ const client = new Client({ intents: [
 	GatewayIntentBits.GuildMessages,
 	GatewayIntentBits.MessageContent
 ] });
-const config = require('../../config.json')
+const config = require('../config.json')
 client.login(config.token)
 const { EmbedBuilder } = require('@discordjs/builders');
 
