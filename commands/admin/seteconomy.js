@@ -19,7 +19,7 @@ module.exports = {
                         .setRequired(true)
                         )
                         .addStringOption(option => 
-                            option.setName('Economy')
+                            option.setName('economy')
                                 .setDescription('economy')
                                 .setRequired(true)
                                 .addChoices(
@@ -33,7 +33,7 @@ module.exports = {
             // Get Option User and Option Money
             const user = interaction.options.getUser("user")
             const money = interaction.options.getInteger("money")
-            const economyoption = interaction.options.getString('Economy');
+            const economyoption = interaction.options.getString('economy');
 
             // Set Money and Set Bank from other User
             const req = new Map()
