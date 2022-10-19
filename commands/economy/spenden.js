@@ -12,10 +12,7 @@ module.exports = {
                 .setRequired(true)),
     async execute(interaction, client) {
 
-        const moneyoption = interaction.options.getInteger('money');
-
-        let map = await economy.get(useroption.id);
-        const money = map.get("money")
+        const optionmoney = interaction.options.getInteger('money');
 
         map = await economy.get(useroption.id);
         const spenden = map.get("spenden")
@@ -37,7 +34,7 @@ module.exports = {
 
         // Create Embed
         const message = new EmbedBuilder()
-            .setTitle(`Konto von ${useroption.id}`)
+            .setTitle(`Gespendet von ${useroption.id}`)
             .setDescription(`Spenden: \n \n ${spenden} \n \n Deine Spenden: \n \n ${userspenden}`)
         console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [BAL.JS]`);
         
