@@ -23,6 +23,18 @@ module.exports = {
         map = await economy.get(useroption.id);
         const userspenden = map.get("userspenden")
 
+        let req = new Map()
+            req.set("money", optionmoney)
+            economy.rem(interaction.user.id, req);
+
+        req = new Map()
+            req.set("spenden", optionmoney)
+            economy.rem(interaction.user.id, req);
+
+        req = new Map()
+            req.set("userspenden", optionmoney)
+            economy.rem(interaction.user.id, req);
+
         // Create Embed
         const message = new EmbedBuilder()
             .setTitle(`Konto von ${useroption.id}`)
