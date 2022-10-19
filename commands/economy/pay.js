@@ -34,7 +34,7 @@ module.exports = {
                     economy.rem(interaction.user.id, req);
                     req = new Map()
                     req.set("bank", optionmoney)
-                    economy.add(user, req);
+                    economy.add(user.id, req);
 
                     // Create Embed
                     const message = new EmbedBuilder()

@@ -87,16 +87,21 @@ const stdin = process.openStdin();
 stdin.addListener("data", async function(input) {
     // Get Arguments
     const args = input.toString().trim().split(" ")
-    console.log('[0xBOT] [i] [' + new Date().toLocaleTimeString('en-US', { hour12: false }) + '] [INF] RECIEVED COMMAND [' + input.toString().trim().toUpperCase() + ']')
+    console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] RECIEVED COMMAND ${input.toString().trim().toUpperCase()}`)
 
     // Kredit Update
     if (args[0].toUpperCase() == 'KREDITUPDATE') {
         // Read Kredit
         const kredite = await economySchema.find({})
 
-		for (const kredit of kredite) {
-			console.log(kredit.userId)
-			console.log(kredit.kredit)
+		for (const db of kredite) {
+			
+			// Read Kredit
+			const kredit = db.kredit;
+
+			let req = new Map()
+            req.set("kredit", 1)
+            economy.rem(db.userId, req);
 		}
     }
   });
