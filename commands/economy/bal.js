@@ -14,7 +14,7 @@ module.exports = {
     async execute(interaction, client) {
 
         // Get User Option
-        const useroption = interaction.option.getUserOption('user');
+        const useroption = interaction.options.getUserOption('user');
 
         // Read Money
         let map = await economy.get(useroption.id);
