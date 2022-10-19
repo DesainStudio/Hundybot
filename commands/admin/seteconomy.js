@@ -37,7 +37,7 @@ module.exports = {
 
             // Set Money and Set Bank from other User
             const req = new Map()
-            req.set("money", money)
+            req.set(`${economyoption}`, money)
             economy.set(user.id, req);
 
             // Create Embed
