@@ -19,7 +19,7 @@ module.exports = {
                         .setRequired(true)
                         )
                         .addStringOption(option => 
-                            option.setName('Money')
+                            option.setName('Economy')
                                 .setDescription('economy')
                                 .setRequired(true)
                                 .addChoices(
