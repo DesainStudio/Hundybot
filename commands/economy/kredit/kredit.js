@@ -9,7 +9,7 @@ module.exports = {
     async execute(interaction, client) {
 
         // Get Kredit
-        const kredit = await kredits.get(interaction.user.id)
+        
 
         // Create Embed
         const message = new EmbedBuilder()

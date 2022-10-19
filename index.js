@@ -14,7 +14,7 @@ const { EmbedBuilder } = require('@discordjs/builders');
 // MongoDB Functions
 global.economy = require("./functions/economy");
 global.messagea = require('./functions/message');
-global.warns = require('./functions/warn')
+global.warns = require('./functions/warn');
 
 // Load all Commands
 client.commands = new Collection();
@@ -82,6 +82,22 @@ client.on('interactionCreate', async interaction => {
 	
 });
 
+const stdin = process.openStdin();
+stdin.addListener("data", async function(input) {
+    // Get Arguments
+    const args = input.toString().trim().split(" ")
+    console.log('[0xBOT] [i] [' + new Date().toLocaleTimeString('en-US', { hour12: false }) + '] [INF] RECIEVED COMMAND [' + input.toString().trim().toUpperCase() + ']')
+
+    // Kredit Update
+    if (args[0].toUpperCase() == 'KREDITUPDATE') {
+        // Read Kredit
+        let map = await economy.get(interaction.user.id);
+        const kredit = map.get("money")
+
+		console.log(kredit)
+    }
+  });
+
 // Deploy Commands
 const commands = [];
 for (const file of commandFiles) {
@@ -96,3 +112,4 @@ rest.put(
 
 // Login in the Bot
 client.login(config.token);
+
