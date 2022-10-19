@@ -8,7 +8,7 @@ exports.get = (userId) => new Promise(async ful => {
             output.set("kupfer", 0)
             output.set("gold", 0)
             output.set("diamant", 0)
-            output.set("emerals", 0)
+            output.set("emerald", 0)
 
             return ful(output)
         }
@@ -17,7 +17,7 @@ exports.get = (userId) => new Promise(async ful => {
         output.set("kupfer", data.kupfer)
         output.set("gold", data.gold)
         output.set("diamant", data.diamant)
-        output.set("emerals", data.emerald)
+        output.set("emerald", data.emerald)
 
         return ful(output)
     })
