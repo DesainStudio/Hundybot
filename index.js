@@ -14,7 +14,7 @@ const { EmbedBuilder } = require('@discordjs/builders');
 // MongoDB Functions
 global.economy = require("./functions/economy");
 global.items = require('./functions/items');
-global.channelfunction = require('./schemas/channel');
+global.channelfunction = require('./functions/channel');
 
 // Load all Commands
 client.commands = new Collection();
