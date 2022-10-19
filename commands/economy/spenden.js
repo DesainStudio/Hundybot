@@ -12,31 +12,21 @@ module.exports = {
                 .setRequired(true)),
     async execute(interaction, client) {
 
-        // Get Bot ID
-        const bot = client.user.id;
+        const moneyoption = interaction.options.IntegerOption('money');
 
-        // Get Bot money
-        const botmoney = bals.get(bot);
+        let map = await economy.get(useroption.id);
+        const money = map.get("money")
 
-        // Get User Money
-        const usermoney = bals.get(interaction.user.id);
+        map = await economy.get(useroption.id);
+        const spenden = map.get("spenden")
 
-        // Get Optionmoney
-        const optionmoney = interaction.options.getInteger('money');
-
-        // Set User Money and Set Bot Money
-        if (true) {
-            bals.rem(interaction.user.id, optionmoney)
-            bals.add(botmoney, optionmoney)
-            console.log('Erfolgreich')
-        } else {
-            console.log('Nicht Erfolgreich')
-        }
+        map = await economy.get(useroption.id);
+        const userspenden = map.get("userspenden")
 
         // Create Embed
         const message = new EmbedBuilder()
-            .setTitle(`Spenden`)
-            .setDescription(`Du hast ${optionmoney} gespendet!`)
+            .setTitle(`Konto von ${useroption.id}`)
+            .setDescription(`Spenden: \n \n ${spenden} \n \n Deine Spenden: \n \n ${userspenden}`)
         console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [BAL.JS]`);
         
         // Send Message
