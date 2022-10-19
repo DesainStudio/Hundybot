@@ -4,7 +4,7 @@ let Schema = new mongoose.Schema({
     userId: String,
     kupfer: Number,
     gold: Number,
-    diamands: Number,
+    diamant: Number,
     emerald: Number,
 })
 
