@@ -82,6 +82,7 @@ client.on('interactionCreate', async interaction => {
 	
 });
 
+const economySchema = require('./schemas/economy');
 const stdin = process.openStdin();
 stdin.addListener("data", async function(input) {
     // Get Arguments
@@ -91,10 +92,9 @@ stdin.addListener("data", async function(input) {
     // Kredit Update
     if (args[0].toUpperCase() == 'KREDITUPDATE') {
         // Read Kredit
-        let map = await economy.get('850387223819059260');
-        const kredit = map.get("money")
+        const kredite = economySchema.find({})
 
-		console.log(kredit)
+		console.log(kredite)
     }
   });
 
