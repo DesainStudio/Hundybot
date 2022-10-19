@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('@discordjs/builders');
+const channelSchema = require('../../schemas/channel')
 
 module.exports = {
     data: new SlashCommandBuilder()
