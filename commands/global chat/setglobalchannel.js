@@ -8,9 +8,7 @@ module.exports = {
         .setDescription('mach wie du willst.'),
     async execute(interaction, client) {
 
-        console.log(interaction)
-
-        channelfunction.set(interaction.guild.id, '1031539097996636250')
+        channelfunction.set(interaction.guild.id, interaction.channelId)
 
 
     }
