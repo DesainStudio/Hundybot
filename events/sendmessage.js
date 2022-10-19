@@ -23,6 +23,8 @@ module.exports = {
 
 				const channel = await client.channels.cache.get(db.channelId);
 
+				console.log(channel)
+
 				channel.send('Test')
 
 			}
