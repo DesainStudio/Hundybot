@@ -13,6 +13,7 @@ const { EmbedBuilder } = require('@discordjs/builders');
 
 // MongoDB Functions
 global.economy = require("./functions/economy");
+global.items = require('./functions/items')
 global.messagea = require('./functions/message');
 global.warns = require('./functions/warn');
 

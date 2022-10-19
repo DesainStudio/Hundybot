@@ -9,16 +9,16 @@ module.exports = {
         .setDescription('Sehe dein Inventar!'),
     async execute(interaction, client) {
 
-        map = await economy.get(interaction.user.id);
+        map = await items.get(interaction.user.id);
         const kupfer = map.get("kupfer")
 
-        map = await economy.get(interaction.user.id);
+        map = await items.get(interaction.user.id);
         const gold = map.get("gold")
 
-        map = await economy.get(interaction.user.id);
+        map = await items.get(interaction.user.id);
         const dias = map.get("diamands")
 
-        map = await economy.get(interaction.user.id);
+        map = await items.get(interaction.user.id);
         const emerald = map.get("emerald")
 
         // Create Embed
