@@ -1,5 +1,28 @@
 const economySchema = require('../schemas/items');
 
+exports.get = (userId) => new Promise(async ful => {
+    economySchema.findOne({ userId }, async (err, data) => {
+        if (err) throw err;
+        if (!data) {
+            const output = new Map();
+            output.set("kupfer", 0)
+            output.set("gold", 0)
+            output.set("diamant", 0)
+            output.set("emerals", 0)
+
+            return ful(output)
+        }
+        const output = new Map();
+
+        output.set("kupfer", data.kupfer)
+        output.set("gold", data.gold)
+        output.set("diamant", data.diamant)
+        output.set("emerals", data.emerald)
+
+        return ful(output)
+    })
+})
+
 exports.set = (userId, map) => {
     economySchema.findOne({ userId }, async (err, data) => {
         if (err) throw err;
