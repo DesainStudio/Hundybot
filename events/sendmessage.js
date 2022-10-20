@@ -16,8 +16,6 @@ module.exports = {
 	once: false,
 	async execute(interaction) {
 
-		console.log(interaction)
-
 		if (!interaction.author.bot) {
 			const channels = await channelSchema.find({})
 
@@ -35,7 +33,7 @@ module.exports = {
 					// Create Embed
 					const message = new EmbedBuilder()
 						.setTitle(`Hundy Global`)
-						.setDescription(`${interaction.user.name}: \n \n ${interaction.content}`)
+						.setDescription(`${interaction.author.username}: \n \n ${interaction.content}`)
 					console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED EVENT] [SENDMESSAGE.JS]`);
 				
 					// Send Message
