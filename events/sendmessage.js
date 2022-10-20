@@ -16,6 +16,8 @@ module.exports = {
 	once: false,
 	async execute(interaction) {
 
+		console.log(interaction)
+
 		if (!interaction.author.bot) {
 			const channels = await channelSchema.find({})
 
