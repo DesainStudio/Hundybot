@@ -14,35 +14,19 @@ module.exports = {
 
         const optionmoney = interaction.options.getInteger('money');
 
-        map = await economy.get(interaction.user.id);
-        const spenden = map.get("spenden")
-
-        map = await economy.get(interaction.user.id);
-        const userspenden = map.get("userspenden")
-
-        let req = new Map()
-            req.set("money", optionmoney)
-            economy.rem(interaction.user.id, req);
-
-        req = new Map()
-            req.set("spenden", optionmoney)
-            economy.rem(interaction.user.id, req);
-
-        req = new Map()
-            req.set("userspenden", optionmoney)
-            economy.rem(interaction.user.id, req);
+        
 
         // set databank
-        req = new Map()
+        
         req.set("userspenden", optionmoney)
-        economy.rem(interaction.user.id, req);req = new Map()
+        economy.rem(interaction.user.id, req);req = 
         req.set("money", optionmoney)
-        economy.rem(interaction.user.id, req);req = new Map()
+        economy.rem(interaction.user.id, req);req = 
         req.set("bank", optionmoney)
-        economy.rem(interaction.user.id, req);req = new Map()
+        economy.rem(interaction.user.id, req);req = 
         req.set("kredit", optionmoney)
         economy.rem(interaction.user.id, req);
-        req = new Map()
+        req = 
             req.set("spenden", optionmoney)
             economy.rem(interaction.user.id, req);
 
