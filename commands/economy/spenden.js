@@ -32,6 +32,20 @@ module.exports = {
             req.set("userspenden", optionmoney)
             economy.rem(interaction.user.id, req);
 
+        // set databank
+        req = new Map()
+        req.set("userspenden", optionmoney)
+        economy.rem(interaction.user.id, req);req = new Map()
+        req.set("money", optionmoney)
+        economy.rem(interaction.user.id, req);req = new Map()
+        req.set("bank", optionmoney)
+        economy.rem(interaction.user.id, req);req = new Map()
+        req.set("kredit", optionmoney)
+        economy.rem(interaction.user.id, req);
+        req = new Map()
+            req.set("spenden", optionmoney)
+            economy.rem(interaction.user.id, req);
+
         // Create Embed
         const message = new EmbedBuilder()
             .setTitle(`Gespendet von ${interaction.user.id}`)
