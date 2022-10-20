@@ -37,7 +37,7 @@ module.exports = {
 					console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED EVENT] [SENDMESSAGE.JS]`);
 				
 					// Send Message
-					channel.send({ embeds: [message.toJSON()]});
+					await channel.send({ embeds: [message.toJSON()]});
 				}
 
 			}
