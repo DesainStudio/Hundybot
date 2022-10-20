@@ -28,7 +28,7 @@ module.exports = {
 				console.log(channel)
 				console.log(serverchannel)
 
-				if (serverchannel === channel) {
+				if (true) {
 					const messagecontent = interaction.content;
 
 
