@@ -16,18 +16,16 @@ module.exports = {
 	once: false,
 	async execute(interaction) {
 
-		console.log(interaction)
-
 		if (!interaction.author.bot) {
 			const channels = await channelSchema.find({})
-
-			const servercahnnels = 1
 
 			for (const db of channels) {
 
 				const channel = await client.channels.cache.get(db.channelId);
 
-				if (true) {
+				const serverchannel = await client.channels.cache.get(interaction.channelId)
+
+				if (serverchannel === channel) {
 					channel.send('Test')
 				}
 
