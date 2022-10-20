@@ -23,7 +23,7 @@ module.exports = {
 
 				const channel = await client.channels.cache.get(db.channelId);
 
-				if (client.channel.id === channel) {
+				if (await client.channels.cache.get(channel) === channel) {
 					channel.send('Test')
 				}
 
