@@ -25,6 +25,8 @@ module.exports = {
 
 				const serverchannel = await client.channels.cache.get(interaction.channelId)
 
+				console.log(db)
+
 				if (serverchannel === channel) {
 					const messagecontent = interaction.content;
 
