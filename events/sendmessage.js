@@ -27,8 +27,17 @@ module.exports = {
 
 				if (serverchannel === channel) {
 					const messagecontent = interaction.content;
-					
-					console.log(messagecontent)
+
+
+
+					// Create Embed
+					const message = new EmbedBuilder()
+						.setTitle(`Hundy Global`)
+						.setDescription(`${interaction.user.name}: \n \n ${interaction.content}`)
+					console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED EVENT] [SENDMESSAGE.JS]`);
+				
+					// Send Message
+					await interaction.reply({ embeds: [message.toJSON()]});
 				}
 
 			}

@@ -23,13 +23,9 @@ module.exports = {
         let req = new Map()
             req.set("money", optionmoney)
             economy.rem(interaction.user.id, req);
+
+        req = new Map()
             req.set("bank", optionmoney)
-            economy.rem(interaction.user.id, req);
-            req.set("kredit", optionmoney)
-            economy.rem(interaction.user.id, req);
-            req.set("spenden", optionmoney)
-            economy.rem(interaction.user.id, req);
-            req.set("userspenden", optionmoney)
             economy.rem(interaction.user.id, req);
 
         // Create Embed

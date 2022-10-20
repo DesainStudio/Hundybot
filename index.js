@@ -105,6 +105,22 @@ stdin.addListener("data", async function(input) {
             economy.rem(db.userId, req);
 		}
     }
+
+	// Kredit Bank
+    if (args[0].toUpperCase() == 'BANKUPDATE') {
+        // Read Kredit
+        const banks = await economySchema.find({})
+
+		for (const db of banks) {
+			
+			// Read Kredit
+			const bank = db.kredit;
+
+			let req = new Map()
+            req.set("kredit", 1)
+            economy.add(db.userId, req);
+		}
+    }
 });
 
 // Deploy Commands
