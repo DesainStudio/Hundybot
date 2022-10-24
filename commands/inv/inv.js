@@ -9,7 +9,7 @@ module.exports = {
         .setDescription('Sehe dein Inventar!'),
     async execute(interaction, client) {
 
-        map = await items.get(interaction.user.id);
+        let map = await items.get(interaction.user.id);
         const kupfer = map.get("kupfer")
 
         map = await items.get(interaction.user.id);

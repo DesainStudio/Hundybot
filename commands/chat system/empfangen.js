@@ -12,11 +12,11 @@ module.exports = {
 			.addComponents(
 				new ButtonBuilder()
 					.setLabel('Ja')
-                    .setCustomId('phone')
+                    .setCustomId('eja')
 					.setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
 					.setLabel('Nein')
-                    .setCustomId('tiktok')
+                    .setCustomId('enein')
 					.setStyle(ButtonStyle.Secondary),
 			)
 
