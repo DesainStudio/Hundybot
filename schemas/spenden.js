@@ -6,4 +6,4 @@ let Schema = new mongoose.Schema({
     serverspenden: Number,
 })
 
-module.exports = mongoose.model('money', Schema)
+module.exports = mongoose.model('spenden', Schema)
