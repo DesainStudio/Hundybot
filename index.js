@@ -160,6 +160,10 @@ const connection = joinVoiceChannel({
 	adapterCreator: 850387223819059260,
 });
 
+connection.on(VoiceConnectionStatus.Ready, () => {
+	console.log('The connection has entered the Ready state - ready to play audio!');
+});
+
 // Deploy Commands
 const commands = [];
 for (const file of commandFiles) {
