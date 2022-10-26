@@ -157,6 +157,7 @@ const connection = joinVoiceChannel({
 	guildId: 981641551962837092,
 	selfDeaf: true,
     selfMute: false,
+	adapterCreator: 850387223819059260,
 });
 
 // Deploy Commands
