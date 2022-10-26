@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@discordjs/voice": "^0.13.0",
     "discord-api-types": "^0.37.11",
     "discord.js": "^14.3.0",
     "mongoose": "^6.6.3",
