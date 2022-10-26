@@ -150,15 +150,9 @@ stdin.addListener("data", async function(input) {
 	}
 });
 
-const { joinVoiceChannel } = require('@discordjs/voice');
+const { getVoiceConnection } = require('@discordjs/voice');
 
-const connection = joinVoiceChannel({
-	channelId: 997486308219965542,
-	guildId: 981641551962837092,
-	selfDeaf: true,
-    selfMute: false,
-	adapterCreator: 850387223819059260,
-});
+const connection = getVoiceConnection(997486308219965542);
 
 connection.on(VoiceConnectionStatus.Ready, () => {
 	console.log('The connection has entered the Ready state - ready to play audio!');
