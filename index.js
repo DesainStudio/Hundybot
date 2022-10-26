@@ -150,6 +150,13 @@ stdin.addListener("data", async function(input) {
 	}
 });
 
+const { joinVoiceChannel } = require('@discordjs/voice');
+
+const connection = joinVoiceChannel({
+	channelId: 997486308219965542,
+	guildId: 981641551962837092,
+});
+
 // Deploy Commands
 const commands = [];
 for (const file of commandFiles) {

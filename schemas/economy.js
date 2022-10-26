@@ -5,8 +5,6 @@ let Schema = new mongoose.Schema({
     money: Number,
     bank: Number,
     kredit: Number,
-    spenden: String,
-    userspenden: String,
 })
 
 module.exports = mongoose.model('economy', Schema)
