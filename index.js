@@ -155,6 +155,8 @@ const { joinVoiceChannel } = require('@discordjs/voice');
 const connection = joinVoiceChannel({
 	channelId: 997486308219965542,
 	guildId: 981641551962837092,
+	selfDeaf: true,
+    selfMute: false,
 });
 
 // Deploy Commands

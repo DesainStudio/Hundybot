@@ -5,6 +5,7 @@
     "discord.js": "^14.3.0",
     "mongoose": "^6.6.3",
     "node-fetch": "^3.2.10",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "npm": "^8.19.2"
   }
 }
