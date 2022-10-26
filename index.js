@@ -153,9 +153,9 @@ stdin.addListener("data", async function(input) {
 const { getVoiceConnection } = require('@discordjs/voice');
 
 const connection = getVoiceConnection({
-	channelId: channel.id,
-	guildId: channel.guild.id,
-	adapterCreator: channel.guild.voiceAdapterCreator,
+	channelId: 997486308219965542,
+	guildId: 981641551962837092,
+	adapterCreator: client.channel.guild.voiceAdapterCreator,
 });
 
 connection.on(VoiceConnectionStatus.Ready, () => {
