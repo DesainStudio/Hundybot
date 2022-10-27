@@ -150,17 +150,17 @@ stdin.addListener("data", async function(input) {
 	}
 });
 
-const { getVoiceConnection } = require('@discordjs/voice');
-
-const connection = getVoiceConnection({
-	channelId: 997486308219965542,
-	guildId: 981641551962837092,
-	adapterCreator: client.channel.guild.voiceAdapterCreator,
-});
-
-connection.on(VoiceConnectionStatus.Ready, () => {
-	console.log('The connection has entered the Ready state - ready to play audio!');
-});
+client.on("ready", () => {
+	const channel = client.channels.get("997486308219965542");
+	if (!channel) return console.error("The channel does not exist!");
+	channel.join().then(connection => {
+	  // Yay, it worked!
+	  console.log("Successfully connected.");
+	}).catch(e => {
+	  // Oh no, it errored! Let's log it to console :)
+	  console.error(e);
+	});
+  });
 
 // Deploy Commands
 const commands = [];
