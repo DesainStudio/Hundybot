@@ -14,23 +14,23 @@ module.exports = {
 			.setCustomId('myModal')
 			.setTitle('My Modal');
 
-            const favoriteColorInput = new TextInputBuilder()
-			.setCustomId('favoriteColorInput')
+            const username = new TextInputBuilder()
+			.setCustomId('papusername')
 		    // The label is the prompt the user sees for this input
-			.setLabel("What's your favorite color?")
+			.setLabel("Was soll dein Nutzername sein?")
 		    // Short means only a single line of text
 			.setStyle(TextInputStyle.Short);
 
-		const hobbiesInput = new TextInputBuilder()
-			.setCustomId('hobbiesInput')
-			.setLabel("What's some of your favorite hobbies?")
+		const passwort = new TextInputBuilder()
+			.setCustomId('pappasswort')
+			.setLabel("Bitte gebe dein Passwort an.")
 		    // Paragraph means multiple lines of text.
 			.setStyle(TextInputStyle.Paragraph);
 
 		// An action row only holds one text input,
 		// so you need one action row per text input.
-		const firstActionRow = new ActionRowBuilder().addComponents(favoriteColorInput);
-		const secondActionRow = new ActionRowBuilder().addComponents(hobbiesInput);
+		const firstActionRow = new ActionRowBuilder().addComponents(papusername);
+		const secondActionRow = new ActionRowBuilder().addComponents(pappasswort);
 
 		// Add inputs to the modal
 		modal.addComponents(firstActionRow, secondActionRow);

@@ -84,9 +84,9 @@ client.on('interactionCreate', async interaction => {
 	// Execute Modal
 	if (interaction.customId === 'myModal') {
 		await interaction.reply({ content: 'Your submission was received successfully!' });
-		const favoriteColor = interaction.fields.getTextInputValue('favoriteColorInput');
-	    const hobbies = interaction.fields.getTextInputValue('hobbiesInput');
-        console.log({ favoriteColor, hobbies });
+		const papusername = interaction.fields.getTextInputValue('papusername');
+	    const pappasswort = interaction.fields.getTextInputValue('pappasswort');
+        
 	}
 });
 
