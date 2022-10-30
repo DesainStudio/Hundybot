@@ -156,7 +156,7 @@ client.on("ready", () => {
 	console.log('Logget The CLient')
 	console.log(client)
 	if (!channel) return console.error("The channel does not exist!");
-	channel.join().then(connection => {
+	channel.id.join().then(connection => {
 	  // Yay, it worked!
 	  console.log("Successfully connected.");
 	}).catch(e => {
