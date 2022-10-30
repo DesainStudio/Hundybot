@@ -152,6 +152,9 @@ stdin.addListener("data", async function(input) {
 
 client.on("ready", () => {
 	const channel = client.channels.cache.get("997486308219965542");
+	console.log(channel)
+	console.log('Logget The CLient')
+	console.log(client)
 	if (!channel) return console.error("The channel does not exist!");
 	channel.join().then(connection => {
 	  // Yay, it worked!
