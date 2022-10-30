@@ -150,21 +150,6 @@ stdin.addListener("data", async function(input) {
 	}
 });
 
-client.on("ready", () => {
-	const channel = client.channels.cache.get("997486308219965542");
-	console.log(channel)
-	console.log('Logget The CLient')
-	console.log(client)
-	if (!channel) return console.error("The channel does not exist!");
-	channel.id.join().then(connection => {
-	  // Yay, it worked!
-	  console.log("Successfully connected.");
-	}).catch(e => {
-	  // Oh no, it errored! Let's log it to console :)
-	  console.error(e);
-	});
-  });
-
 // Deploy Commands
 const commands = [];
 for (const file of commandFiles) {
