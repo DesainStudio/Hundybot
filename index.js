@@ -47,7 +47,7 @@ for (const file of eventFiles) {
 
 // Interaction Handler
 client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand() && !interaction.isButton()) return
+	if (!interaction.isCommand() && !interaction.isButton() && !interaction.isModalSubmit()) return
 	if (interaction.isChatInputCommand()) {
 		const command = client.commands.get(interaction.commandName);
 		if (!command) return;
@@ -80,7 +80,11 @@ client.on('interactionCreate', async interaction => {
 			console.error(e)
 		}
 	}
-	
+
+	// Execute Modal
+	if (interaction.customId === 'myModal') {
+		await interaction.reply({ content: 'Your submission was received successfully!' });
+	}
 });
 
 // Console Commands

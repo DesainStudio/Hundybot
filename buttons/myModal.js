@@ -8,10 +8,7 @@ module.exports = {
     },
     async execute(interaction) {
 
-        if (!interaction.isModalSubmit()) return;
-	    if (interaction.customId === 'myModal') {
-	    	await interaction.reply({ content: 'Your submission was received successfully!' });
-	    }
+        
 
     }
 }
