@@ -8,7 +8,9 @@ module.exports = {
     },
     async execute(interaction) {
 
-        
+        const favoriteColor = interaction.fields.getTextInputValue('favoriteColorInput');
+	    const hobbies = interaction.fields.getTextInputValue('hobbiesInput');
+        console.log({ favoriteColor, hobbies });
 
     }
 }
