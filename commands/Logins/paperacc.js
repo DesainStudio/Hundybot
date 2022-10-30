@@ -29,8 +29,8 @@ module.exports = {
 
 		// An action row only holds one text input,
 		// so you need one action row per text input.
-		const firstActionRow = new ActionRowBuilder().addComponents(papusername);
-		const secondActionRow = new ActionRowBuilder().addComponents(pappasswort);
+		const firstActionRow = new ActionRowBuilder().addComponents(username);
+		const secondActionRow = new ActionRowBuilder().addComponents(passwort);
 
 		// Add inputs to the modal
 		modal.addComponents(firstActionRow, secondActionRow);
