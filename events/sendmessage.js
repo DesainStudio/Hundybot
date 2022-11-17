@@ -16,33 +16,18 @@ module.exports = {
 	once: false,
 	async execute(interaction) {
 
-		if (!interaction.author.bot) {
+        const channel = await channelSchema.find({serverId: interaction.guild.id})
+
+		if (channel[0].channelId === interaction.channel.id) {
 			const channels = await channelSchema.find({})
-
 			for (const db of channels) {
-
-				const channel = await client.channels.cache.get(db.channelId);
-
-				const serverchannel = await client.channels.cache.get(interaction.channelId)
-
-				console.log(channel)
-				console.log(serverchannel)
-
-				if (true) {
-					const messagecontent = interaction.content;
-
-
-
-					// Create Embed
+				if (!interaction.author.bot) {
+					const channnel = await client.channels.fetch(db.channelId);
 					const message = new EmbedBuilder()
-						.setTitle(`Hundy Global`)
-						.setDescription(`${interaction.author.username}: \n \n ${interaction.content}`)
-					console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED EVENT] [SENDMESSAGE.JS]`);
-				
-					// Send Message
-					await channel.send({ embeds: [message.toJSON()]});
+						.setTitle(`Hundy Global | ${interaction.author.username}`)
+						.setDescription(`Message: \n \n ${interaction.content}`)
+					await channnel.send({ embeds: [message]})
 				}
-
 			}
 		}
 

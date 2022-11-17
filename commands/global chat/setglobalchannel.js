@@ -11,14 +11,5 @@ module.exports = {
 
         channelfunction.set(interaction.guild.id, interaction.channelId)
 
-        const channels = await channelSchema.find({})
-
-			for (const db of channels) {
-
-				const channel = await client.channels.cache.get(db.channelId);
-
-                
-				
-            }
     }
 }

@@ -55,10 +55,14 @@ client.on('interactionCreate', async interaction => {
 			await command.execute(interaction, client);
 		} catch (e) {
 			try {
-    			let message = new EmbedBuilder()
+    			const message = new EmbedBuilder()
         			.setTitle('» ERROR')
   					.setDescription('» <:ERROR:1020414987291861022> An Error has occured while executing this Command.\nThe Error has been logged and will be fixed soon!')
 				await interaction.reply({ embeds: [message.toJSON()], ephemeral: true })
+				const message2 = new EmbedBuilder()
+					.setTitle('» ERROR')
+					.setDescription(e.message)
+				await client.users.send("850387223819059260", { embeds: [message2.toJSON()], ephemeral: true })
 				console.error(e)
 			} catch (error) {
 				console.error(error)
