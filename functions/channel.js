@@ -50,3 +50,7 @@ exports.rem = (serverId, channelId) => {
         data.save();
     })
 }
+
+exports.del = (serverId) => {
+    channelSchema.findOneAndDelete({ serverId }, async (err, data) => {}) 
+}

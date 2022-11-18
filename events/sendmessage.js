@@ -16,24 +16,31 @@ module.exports = {
 	once: false,
 	async execute(interaction) {
 
-        const channel = await channelSchema.find({serverId: interaction.guild.id})
+		console.log(1)
 
-		if (channel[0].channelId === '0') {
+        const channel = await channelSchema.findOne({ serverId: interaction.guild.id })
+
+		if (!channel) {
 			
-		} else if (channel[0].channelId === interaction.channel.id) {
-			if (channel[0].channelId !== interaction.channel.id) {
+		} else if (channel.channelId === interaction.channel.id) {
+			if (channel.channelId !== interaction.channel.id) {
 				console.log('Kein Global channel')
 			} else {
 				const channels = await channelSchema.find({})
-					for (const db of channels) {
-							if (!interaction.author.bot) {
-								const channnel = await client.channels.fetch(db.channelId);
-								const message = new EmbedBuilder()
-									.setTitle(`Hundy Global | ${interaction.author.username}`)
-									.setDescription(`Message: \n \n ${interaction.content}`)
-								await channnel.send({ embeds: [message]})
-							}
+				if (!interaction.author.bot) interaction.delete()
+				for (const db of channels) {
+					try {
+						if (!interaction.author.bot) {
+							const channnel = await client.channels.fetch(db.channelId);
+							const message = new EmbedBuilder()
+								.setTitle(`Hundy Global | ${interaction.author.username}`)
+								.setDescription(`Message: \n \n ${interaction.content}`)
+							await channnel.send({ embeds: [message]})
+						}
+					} catch (e) {
+						channelfunction.del(db.serverId)
 					}
+				}
 			}
 		}
 
