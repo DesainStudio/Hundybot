@@ -169,7 +169,7 @@ for (const file of commandFiles) {
 }
 const rest = new REST({ version: '9' }).setToken(config.token);
 rest.put(
-	Routes.applicationCommands("1009930233727684739"),
+	Routes.applicationCommands(config.id),
 	{ body: commands },
 );
 

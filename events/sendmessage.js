@@ -18,18 +18,40 @@ module.exports = {
 
         const channel = await channelSchema.find({serverId: interaction.guild.id})
 
-		if (channel[0].channelId === interaction.channel.id) {
-			const channels = await channelSchema.find({})
-			for (const db of channels) {
-				if (!interaction.author.bot) {
-					const channnel = await client.channels.fetch(db.channelId);
-					const message = new EmbedBuilder()
-						.setTitle(`Hundy Global | ${interaction.author.username}`)
-						.setDescription(`Message: \n \n ${interaction.content}`)
-					await channnel.send({ embeds: [message]})
-				}
+		if (channel[0].channelId === '0') {
+			
+		} else if (channel[0].channelId === interaction.channel.id) {
+			if (channel[0].channelId !== interaction.channel.id) {
+				console.log('Kein Global channel')
+			} else {
+				const channels = await channelSchema.find({})
+					for (const db of channels) {
+							if (!interaction.author.bot) {
+								const channnel = await client.channels.fetch(db.channelId);
+								const message = new EmbedBuilder()
+									.setTitle(`Hundy Global | ${interaction.author.username}`)
+									.setDescription(`Message: \n \n ${interaction.content}`)
+								await channnel.send({ embeds: [message]})
+							}
+					}
 			}
 		}
 
 	},
 };
+/* 
+if (channel[0].channelId !== interaction.channel.id) {
+			console.log('Kein Global channel')
+		} else {
+			const channels = await channelSchema.find({})
+				for (const db of channels) {
+						if (!interaction.author.bot) {
+							const channnel = await client.channels.fetch(db.channelId);
+							const message = new EmbedBuilder()
+								.setTitle(`Hundy Global | ${interaction.author.username}`)
+								.setDescription(`Message: \n \n ${interaction.content}`)
+							await channnel.send({ embeds: [message]})
+						}
+				}
+		}
+*/
