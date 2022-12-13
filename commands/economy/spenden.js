@@ -14,19 +14,19 @@ module.exports = {
 
         const optionmoney = interaction.options.getInteger('money');
 
-        map = await economy.get(interaction.user.id);
+        map = await economy2.get(interaction.user.id);
         const userspenden = map.get("userspenden")
 
-        map = await economy.get(interaction.user.id);
+        map = await economy2.get(interaction.user.id);
         const serverspenden = map.get("serverspenden")
 
         let req = new Map()
             req.set("money", optionmoney)
-            economy.rem(interaction.user.id, req);
+            economy2.rem(interaction.user.id, req);
 
         req = new Map()
             req.set("bank", optionmoney)
-            economy.rem(interaction.user.id, req);
+            economy2.rem(interaction.user.id, req);
 
         // Create Embed
         const message = new EmbedBuilder()

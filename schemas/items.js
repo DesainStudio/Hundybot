@@ -6,6 +6,9 @@ let Schema = new mongoose.Schema({
     gold: Number,
     diamant: Number,
     emerald: Number,
+    banned: Boolean,
+    update: Boolean,
+    bugfix: Boolean
 })
 
-module.exports = mongoose.model('money', Schema)
+module.exports = mongoose.model('items', Schema)

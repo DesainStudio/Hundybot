@@ -15,17 +15,17 @@ module.exports = {
         // Get Option Money
         const optionmoney = interaction.options.getInteger('money');
 
-        let map = await economy.get(interaction.user.id);
+        let map = await economy2.get(interaction.user.id);
         const money = map.get("money")
 
         // Set Money and Bank
         if (optionmoney >= 0 && money >= optionmoney) {
             let req = new Map()
             req.set("money", optionmoney)
-            economy.rem(interaction.user.id, req);
+            economy2.rem(interaction.user.id, req);
             req = new Map()
             req.set("bank", optionmoney)
-            economy.add(interaction.user.id, req);
+            economy2.add(interaction.user.id, req);
 
             // Create Embed
             const message = new EmbedBuilder()

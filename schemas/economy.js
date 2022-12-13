@@ -5,6 +5,10 @@ let Schema = new mongoose.Schema({
     money: Number,
     bank: Number,
     kredit: Number,
+    sparbuch: Number,
+    banned: Boolean,
+    update: Boolean,
+    bugfix: Boolean
 })
 
-module.exports = mongoose.model('economy', Schema)
+module.exports = mongoose.model('economy2', Schema)

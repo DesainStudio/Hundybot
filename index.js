@@ -8,14 +8,15 @@ const client = new Client({ intents: [
 	GatewayIntentBits.Guilds,
 	GatewayIntentBits.GuildMessages,
 	GatewayIntentBits.MessageContent
-] });
+], partials: [1] });
 const { EmbedBuilder } = require('@discordjs/builders');
 
 // MongoDB Functions
-global.economy = require("./functions/economy");
+global.economy2 = require("./functions/economy");
 global.items = require('./functions/items');
 global.channelfunction = require('./functions/channel');
 global.spenden = require('./functions/spenden');
+global.bumpfunction = require('./functions/bump')
 
 // Load all Commands
 client.commands = new Collection();
@@ -95,9 +96,10 @@ client.on('interactionCreate', async interaction => {
 });
 
 // Console Commands
-const economySchema = require('./schemas/economy');
+/*
+const economy2Schema = require('./schemas/economy');
 const itemSchema = require('./schemas/items');
-const economy = require('./schemas/economy');
+const economy2 = require('./schemas/economy');
 const stdin = process.openStdin();
 stdin.addListener("data", async function(input) {
     // Get Arguments
@@ -107,7 +109,7 @@ stdin.addListener("data", async function(input) {
     // Kredit Update
     if (args[0].toUpperCase() == 'KREDITUPDATE') {
         // Read Kredit
-        const kredite = await economySchema.find({})
+        const kredite = await economy2Schema.find({})
 
 		for (const db of kredite) {
 			
@@ -116,14 +118,14 @@ stdin.addListener("data", async function(input) {
 
 			let req = new Map()
             req.set("kredit", 1)
-            economy.rem(db.userId, req);
+            economy2.rem(db.userId, req);
 		}
     }
 
 	// Kredit Bank
     if (args[0].toUpperCase() == 'BANKUPDATE') {
         // Read Kredit
-        const banks = await economySchema.find({})
+        const banks = await economy2Schema.find({})
 
 		for (const db of banks) {
 			
@@ -132,7 +134,7 @@ stdin.addListener("data", async function(input) {
 
 			let req = new Map()
             req.set("kredit", 1)
-            economy.add(db.userId, req);
+            economy2.add(db.userId, req);
 		}
     }
 });
@@ -156,10 +158,11 @@ stdin.addListener("data", async function(input) {
 
 			let req = new Map()
 			req.set("gold", 1)
-			economy.add(db.userId, req)
+			economy2.add(db.userId, req)
 		}
 	}
 });
+*/
 
 // Deploy Commands
 const commands = [];

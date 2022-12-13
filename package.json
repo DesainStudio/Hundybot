@@ -1,12 +1,12 @@
 {
   "dependencies": {
     "@discordjs/voice": "^0.13.0",
+    "cli-progress": "^3.11.2",
     "discord-api-types": "^0.37.11",
     "discord.js": "^14.3.0",
-    "mongoose": "^6.6.3",
+    "mongoose": "6.6.3",
     "node-fetch": "^3.2.10",
-    "nodemon": "^2.0.20",
-    "npm": "^8.19.2",
-    "ping": "^0.4.2"
+    "ping": "^0.4.2",
+    "rjutils-collection": "^1.0.2"
   }
 }
