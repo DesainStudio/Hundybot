@@ -363,7 +363,7 @@ readable-web-to-node-stream@^3.0.2:
   dependencies:
     readable-stream "^3.6.0"
 
-rjutils-collection@^1.0.2:
+rjutils-collection@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/rjutils-collection/-/rjutils-collection-1.0.5.tgz#825dbb5f912380afc288ec5b016c9b8fec42372a"
   integrity sha512-MYKd7SE3D6CV8PcBKp6JBKSuzlBCobCt5a2PO1yUBYwkvaPTV8Kb9x/ZZS3FRdVmxywyb9t8EPhykMSP+I0LpQ==

@@ -7,6 +7,6 @@
     "mongoose": "6.6.3",
     "node-fetch": "^3.2.10",
     "ping": "^0.4.2",
-    "rjutils-collection": "^1.0.2"
+    "rjutils-collection": "^1.0.5"
   }
 }

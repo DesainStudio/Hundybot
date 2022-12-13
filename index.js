@@ -10,12 +10,12 @@ const client = new Client({ intents: [
 	GatewayIntentBits.MessageContent
 ], partials: [1] });
 const { EmbedBuilder } = require('@discordjs/builders');
+const utils = require('rjutils-collection');
 
 // MongoDB Functions
 global.economy2 = require("./functions/economy");
 global.items = require('./functions/items');
 global.channelfunction = require('./functions/channel');
-global.spenden = require('./functions/spenden');
 global.bumpfunction = require('./functions/bump')
 
 // Load all Commands
@@ -96,10 +96,8 @@ client.on('interactionCreate', async interaction => {
 });
 
 // Console Commands
-/*
 const economy2Schema = require('./schemas/economy');
 const itemSchema = require('./schemas/items');
-const economy2 = require('./schemas/economy');
 const stdin = process.openStdin();
 stdin.addListener("data", async function(input) {
     // Get Arguments
@@ -107,62 +105,74 @@ stdin.addListener("data", async function(input) {
     console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] RECIEVED COMMAND ${input.toString().trim().toUpperCase()}`)
 
     // Kredit Update
-    if (args[0].toUpperCase() == 'KREDITUPDATE') {
-        // Read Kredit
-        const kredite = await economy2Schema.find({})
+    if (args[0].toUpperCase() == 'SPARBUCHZINSEN') {
 
-		for (const db of kredite) {
+		const perAdd = (value, percent) => {
+			const percentage = ((percent/100) * value)
+			return (value + percentage)
+		}
+
+        // Read Kredit
+        const sparbuche = await economy2Schema.find({})
+
+		for (const db of sparbuche) {
 			
 			// Read Kredit
-			const kredit = db.kredit;
+			const sparbuch = db.sparbuch;
 
-			let req = new Map()
-            req.set("kredit", 1)
-            economy2.rem(db.userId, req);
+			economy2.edt(db.userId, {
+                sparbuch: {
+                    opt: "set",
+                    val: Math.floor(perAdd(db.sparbuch, utils.randomNum(20,200) / 100))
+                }
+            })
 		}
     }
 
 	// Kredit Bank
-    if (args[0].toUpperCase() == 'BANKUPDATE') {
+    if (args[0].toUpperCase() == 'BANKZINSEN') {
+        const perAdd = (value, percent) => {
+			const percentage = ((percent/100) * value)
+			return (value + percentage)
+		}
+
         // Read Kredit
-        const banks = await economy2Schema.find({})
+        const banke = await economy2Schema.find({})
 
-		for (const db of banks) {
-			
-			// Read Kredit
-			const bank = db.bank;
+		for (const db of banke) {
 
-			let req = new Map()
-            req.set("kredit", 1)
-            economy2.add(db.userId, req);
+			economy2.edt(db.userId, {
+                bank: {
+                    opt: "set",
+                    val: Math.floor(perAdd(db.bank, utils.randomNum(20,200) / 100))
+                }
+            })
 		}
     }
-});
-stdin.addListener("data", async function(input) {
-    // Get Arguments
-    const args = input.toString().trim().split(" ")
-    console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false })}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] RECIEVED COMMAND ${input.toString().trim().toUpperCase()}`)
 
-    // Items Update
-	if (args[0].toUpperCase() == 'MINEUPDATE') {
-		// get Items 
-		const items = await itemSchema.find({})
-
-		for (const db of items) {
-
-			// get items
-			const kupfer = db.kupfer;
-			const gold = db.gold;
-			const diamant = db.diamant;
-			const emeralds = db.emerald;
-
-			let req = new Map()
-			req.set("gold", 1)
-			economy2.add(db.userId, req)
+	/*if (args[0].toUpperCase() == 'KREDITZINSEN') {
+        const perRem = (value, percent) => {
+			const percentage = ((percent/100) * value)
+			return (value + percentage)
 		}
-	}
+
+        // Read Kredit
+        const sparbuche = await economy2Schema.find({})
+
+		for (const db of sparbuche) {
+			
+			// Read Kredit
+			const sparbuch = db.sparbuch;
+
+			economy2.edt(db.userId, {
+                sparbuch: {
+                    opt: "set",
+                    val: Math.floor(perRem(db.sparbuch, utils.randomNum(40,400) / 100))
+                }
+            })
+		}
+    }*/
 });
-*/
 
 // Deploy Commands
 const commands = [];

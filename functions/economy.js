@@ -1,102 +1,58 @@
 const economy2Schema = require('../schemas/economy');
 
-exports.get = (userId) => new Promise(async ful => {
-    economy2Schema.findOne({ userId }, async (err, data) => {
+const process = (option, total, value) => {
+    if (option === 'add') total += value
+    if (option === 'rem') total -= value
+    if (option === 'set') total = value
+
+    return total
+}
+
+exports.get = (userId) => new Promise(async(ful) => {
+    economy2Schema.findOne({ userId }, async(err, data) => {
         if (err) throw err;
+
         if (!data) {
-            const output = new Map();
-            output.set("money", 0)
-            output.set("bank", 0)
-            output.set("kredit", 0)
-            output.set("sparbuch", 0)
-
-            return ful(output)
+            return ful({
+                "money": 0,
+                "bank": 0,
+                "kredit": 0,
+                "sparbuch": 0
+            })
+        } else {
+            return ful({
+                "money": data.money,
+                "bank": data.bank,
+                "kredit": data.kredit,
+                "sparbuch": data.sparbuch
+            })
         }
-        const output = new Map();
-
-        output.set("money", data.money)
-        output.set("bank", data.bank)
-        output.set("kredit", data.kredit)
-        output.set("sparbuch", data.sparbuch)
-
-        return ful(output)
     })
 })
 
-exports.set = (userId, map) => {
-    economy2Schema.findOne({ userId }, async (err, data) => {
+exports.edt = async(userId, json) => {
+    economy2Schema.findOne({ userId }, async(err, data) => {
         if (err) throw err;
-        if (data) {
-            if (map.has('money')) { data.money = map.get('money') }
-            if (map.has('bank')) { data.bank = map.get('bank') }
-            if (map.has('kredit')) { data.kredit = map.get('kredit') }
-            if (map.has('sparbuch')) { data.sparbuch = map.get('sparbuch')}
-        } else {
-            let money; if (map.has('money')) { money = map.get('money') } else { money = 0 }
-            let bank; if (map.has('bank')) { bank = map.get('bank') } else { bank = 0 }
-            let kredit; if (map.has('kredit')) { kredit = map.get('kredit') } else { kredit = 0 }
-            let sparbuch; if (map.has('sparbuch')) { sparbuch = map.get('sparbuch') } else { sparbuch = 0 }
 
+        if (!data) {
             data = new economy2Schema({
                 userId,
-                money,
-                bank,
-                kredit,
-                sparbuch
+                money: ('money' in json) ? json.money.val : 0,
+                bank: ('bank' in json) ? json.bank.val : 0,
+                kredit: ('kredit' in json) ? json.kredit.val : 0,
+                sparbuch: ('sparbuch' in json) ? json.sparbuch.val : 0
             })
+        } else {
+            if ('money' in json) data.money = process(json.money.opt, data.money, json.money.val)
+            if ('bank' in json) data.bank = process(json.bank.opt, data.bank, json.bank.val)
+            if ('kredit' in json) data.kredit = process(json.kredit.opt, data.kredit, json.kredit.val)
+            if ('sparbuch' in json) data.sparbuch = process(json.sparbuch.opt, data.sparbuch, json.sparbuch.val)
         }
+
         data.save()
     })
 }
 
-exports.add = (userId, map) => {
-    economy2Schema.findOne({ userId }, async (err, data) => {
-        if (err) throw err;
-        if (data) {
-            if (map.has('money')) { data.money += map.get('money') }
-            if (map.has('bank')) { data.bank += map.get('bank') }
-            if (map.has('kredit')) { data.kredit += map.get('kredit') }
-            if (map.has('sparbuch')) { data.sparbuch += map.get('sparbuch') }
-        } else {
-            let money; if (map.has('money')) { money = map.get('money') } else { money = 0 }
-            let bank; if (map.has('bank')) { bank = map.get('bank') } else { bank = 0 }
-            let kredit; if (map.has('kredit')) { kredit = map.get('kredit') } else { kredit = 0 }
-            let ksparbuch; if (map.has('ksparbuch')) { ksparbuch = map.get('ksparbuch') } else { ksparbuch = 0 }
-
-            data = new economy2Schema({
-                userId,
-                money,
-                bank,
-                kredit,
-                sparbuch
-            })
-        }
-        data.save()
-    })
-}
-
-exports.rem = (userId, map) => {
-    economy2Schema.findOne({ userId }, async (err, data) => {
-        if (err) throw err;
-        if (data) {
-            if (map.has('money')) { data.money -= map.get('money') }
-            if (map.has('bank')) { data.bank -= map.get('bank') }
-            if (map.has('kredit')) { data.kredit -= map.get('kredit') }
-            if (map.has('sparbuch')) { data.sparbuch -= map.get('sparbuch') }
-        } else {
-            let money; if (map.has('money')) { money = map.get('money') } else { money = 0 }
-            let bank; if (map.has('bank')) { bank = map.get('bank') } else { bank = 0 }
-            let kredit; if (map.has('kredit')) { kredit = map.get('kredit') } else { kredit = 0 }
-            let sparbuch; if (map.has('sparbuch')) { sparbuch = map.get('sparbuch') } else { sparbuch = 0 }
-
-            data = new economy2Schema({
-                userId,
-                money,
-                bank,
-                kredit,
-                sparbuch
-            })
-        }
-        data.save()
-    })
+exports.del = (userId) => {
+    economy2Schema.findOneAndDelete({ userId }, async (err, data) => {}) 
 }
