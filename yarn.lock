@@ -73,9 +73,9 @@
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
 
 "@types/node@*":
-  version "18.11.14"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.14.tgz#a8571b25f3a31e9ded14e3ab9488509adef831d8"
-  integrity sha512-0KXV57tENYmmJMl+FekeW9V3O/rlcqGQQJ/hNh9r8pKIj304pskWuEd8fCyNT86g/TpO0gcOTiLzsHLEURFMIQ==
+  version "18.11.15"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.15.tgz#de0e1fbd2b22b962d45971431e2ae696643d3f5d"
+  integrity sha512-VkhBbVo2+2oozlkdHXLrb3zjsRkpdnaU2bXmX8Wgle3PUi569eLRaHGlgETQHR7lLL1w7GiG3h9SnePhxNDecw==
 
 "@types/webidl-conversions@*":
   version "7.0.0"
@@ -158,7 +158,7 @@ discord-api-types@^0.37.11, discord-api-types@^0.37.12, discord-api-types@^0.37.
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.22.tgz#9bd5ac0de818d4d0bcf0f3e79e93945cc4dfe449"
   integrity sha512-1FSm5hIUaxt3e+3H6lhY5Hg32DTJCPp3Q5gf3CM2CPSr95ZnqkSNEV0s7EdiBrlv5QoPrpcPIDYC3hWqZT2mIg==
 
-discord.js@^14.3.0:
+discord.js@^14.7.1:
   version "14.7.1"
   resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-14.7.1.tgz#26079d0ff4d27daf02480a403c456121f0682bd9"
   integrity sha512-1FECvqJJjjeYcjSm0IGMnPxLqja/pmG1B0W2l3lUY2Gi4KXiyTeQmU1IxWcbXHn2k+ytP587mMWqva2IA87EbA==

@@ -1,7 +1,7 @@
-const economy2Schema = require('../schemas/items');
+const economySchema = require('../schemas/items');
 
 exports.get = (userId) => new Promise(async ful => {
-    economy2Schema.findOne({ userId }, async (err, data) => {
+    economySchema.findOne({ userId }, async (err, data) => {
         if (err) throw err;
         if (!data) {
             const output = new Map();
@@ -24,7 +24,7 @@ exports.get = (userId) => new Promise(async ful => {
 })
 
 exports.set = (userId, map) => {
-    economy2Schema.findOne({ userId }, async (err, data) => {
+    economySchema.findOne({ userId }, async (err, data) => {
         if (err) throw err;
         if (data) {
             if (map.has('userId')) { data.userId = map.get('userId'); }
@@ -38,7 +38,7 @@ exports.set = (userId, map) => {
             const gold = map.get('gold')
             const emerald = map.get('emerald')
 
-            data = new economy2Schema({
+            data = new economySchema({
                 userId,
                 kupfer,
                 diamant,
@@ -50,7 +50,7 @@ exports.set = (userId, map) => {
 }
 
 exports.add = (userId, map) => {
-    economy2Schema.findOne({ userId }, async (err, data) => {
+    economySchema.findOne({ userId }, async (err, data) => {
         if (err) throw err;
         if (data) {
             if (map.has('userId')) { data.userId = map.get('userId'); }
@@ -64,7 +64,7 @@ exports.add = (userId, map) => {
             const gold = map.get('gold')
             const emerald = map.get('emerald')
 
-            data = new economy2Schema({
+            data = new economySchema({
                 userId,
                 kupfer,
                 diamant,
@@ -76,7 +76,7 @@ exports.add = (userId, map) => {
 }
 
 exports.rem = (userId, map) => {
-    economy2Schema.findOne({ userId }, async (err, data) => {
+    economySchema.findOne({ userId }, async (err, data) => {
         if (err) throw err;
         if (data) {
             if (map.has('userId')) { data.userId = map.get('userId'); }
@@ -90,7 +90,7 @@ exports.rem = (userId, map) => {
             const gold = map.get('gold')
             const emerald = map.get('emerald')
 
-            data = new economy2Schema({
+            data = new economySchema({
                 userId,
                 kupfer,
                 diamant,

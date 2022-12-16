@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { EmbedBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -21,19 +21,19 @@ module.exports = {
         const optionbank = interaction.options.getInteger('bank');
 
         // Read bank
-        const usereconomy = await economy2.get(interaction.user.id);
+        const usereconomy = await economy.get(interaction.user.id);
 
         // Set bank and Bank
         if (optionbank >= 0 && usereconomy.bank >= optionbank) {
             if (interaction.user.id !== user.id) {
                 if (!user.bot) {
-                    economy2.edt(interaction.user.id, {
+                    economy.edt(interaction.user.id, {
                         bank: {
                             opt: "rem",
                             val: optionbank
                         }
                     })
-                    economy2.edt(user.id, {
+                    economy.edt(user.id, {
                         bank: {
                             opt: "add",
                             val: optionbank

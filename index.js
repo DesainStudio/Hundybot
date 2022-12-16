@@ -9,11 +9,11 @@ const client = new Client({ intents: [
 	GatewayIntentBits.GuildMessages,
 	GatewayIntentBits.MessageContent
 ], partials: [1] });
-const { EmbedBuilder } = require('@discordjs/builders');
+const { EmbedBuilder } = require('discord.js');
 const utils = require('rjutils-collection');
 
 // MongoDB Functions
-global.economy2 = require("./functions/economy");
+global.economy = require("./functions/economy");
 global.items = require('./functions/items');
 global.channelfunction = require('./functions/channel');
 global.bumpfunction = require('./functions/bump')
@@ -96,7 +96,7 @@ client.on('interactionCreate', async interaction => {
 });
 
 // Console Commands
-const economy2Schema = require('./schemas/economy');
+const economySchema = require('./schemas/economy');
 const itemSchema = require('./schemas/items');
 const stdin = process.openStdin();
 stdin.addListener("data", async function(input) {
@@ -113,17 +113,17 @@ stdin.addListener("data", async function(input) {
 		}
 
         // Read Kredit
-        const sparbuche = await economy2Schema.find({})
+        const sparbuche = await economySchema.find({})
 
 		for (const db of sparbuche) {
 			
 			// Read Kredit
 			const sparbuch = db.sparbuch;
 
-			economy2.edt(db.userId, {
+			economy.edt(db.userId, {
                 sparbuch: {
-                    opt: "set",
-                    val: Math.floor(perAdd(db.sparbuch, utils.randomNum(20,200) / 100))
+                    opt: "add",
+                    val: Math.floor(perAdd(sparbuch, utils.randomNum(20,200) / 100))
                 }
             })
 		}
@@ -137,18 +137,39 @@ stdin.addListener("data", async function(input) {
 		}
 
         // Read Kredit
-        const banke = await economy2Schema.find({})
+        const banke = await economySchema.find({})
 
 		for (const db of banke) {
 
-			economy2.edt(db.userId, {
+			economy.edt(db.userId, {
                 bank: {
-                    opt: "set",
+                    opt: "add",
                     val: Math.floor(perAdd(db.bank, utils.randomNum(20,200) / 100))
                 }
             })
 		}
     }
+
+	if (args[0].toUpperCase() == 'MINE') {
+        const perAdd = (value, percent) => {
+			const percentage = ((percent/100) * value)
+			return (value + percentage)
+		}
+
+        const bitcoin = await economySchema.find({})
+
+		for (const db of bitcoin) {
+
+			economy.edt(db.userId, {
+				bitcoin: {
+					opt: "add",
+					val: 0.0006
+				}
+			})
+
+		}
+
+		}
 
 	/*if (args[0].toUpperCase() == 'KREDITZINSEN') {
         const perRem = (value, percent) => {
@@ -157,14 +178,14 @@ stdin.addListener("data", async function(input) {
 		}
 
         // Read Kredit
-        const sparbuche = await economy2Schema.find({})
+        const sparbuche = await economySchema.find({})
 
 		for (const db of sparbuche) {
 			
 			// Read Kredit
 			const sparbuch = db.sparbuch;
 
-			economy2.edt(db.userId, {
+			economy.edt(db.userId, {
                 sparbuch: {
                     opt: "set",
                     val: Math.floor(perRem(db.sparbuch, utils.randomNum(40,400) / 100))
@@ -188,4 +209,3 @@ rest.put(
 
 // Login in the Bot
 client.login(config.token);
-

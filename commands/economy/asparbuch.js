@@ -1,7 +1,7 @@
 "use strict";
 
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { EmbedBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -16,11 +16,11 @@ module.exports = {
 
         const optionmoney = interaction.options.getInteger('money');
 
-        const usereconomy = await economy2.get(interaction.user.id);
+        const usereconomy = await economy.get(interaction.user.id);
 
         if (optionmoney >= 0 && usereconomy.sparbuch >= optionmoney) {
             
-            economy2.edt(interaction.user.id, {
+            economy.edt(interaction.user.id, {
                 bank: {
                     opt: "add",
                     val: optionmoney

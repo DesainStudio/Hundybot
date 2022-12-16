@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { EmbedBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const { BaseClient, resolveColor } = require('discord.js');
 // const User = require('../schemas/UserSchema')
 
@@ -19,8 +19,8 @@ module.exports = {
                         .setRequired(true)
                         )
                         .addStringOption(option => 
-                            option.setName('economy2')
-                                .setDescription('economy2')
+                            option.setName('economy')
+                                .setDescription('economy')
                                 .setRequired(true)
                                 .addChoices(
                                     // Setup Choices
@@ -33,12 +33,12 @@ module.exports = {
             // Get Option User and Option Money
             const user = interaction.options.getUser("user")
             const money = interaction.options.getInteger("money")
-            const economy2option = interaction.options.getString('economy2');
+            const economyoption = interaction.options.getString('economy');
 
             // Set Money and Set Bank from other User
             const req = new Map()
-            req.set(`${economy2option}`, money)
-            economy2.set(user.id, req);
+            req.set(`${economyoption}`, money)
+            economy.set(user.id, req);
 
             // Create Embed
             const message = new EmbedBuilder()

@@ -1,7 +1,7 @@
 const channelSchema = require('../schemas/channel');
 const { Client, GatewayIntentBits } = require('discord.js');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { EmbedBuilder } = require('@discordjs/builders');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
 	name: 'SEND MESSAGE',
@@ -26,13 +26,11 @@ module.exports = {
 			if (channel.channelId !== interaction.channel.id) {
 				console.log('Kein Global channel')
 			} else {
-				console.log(interaction)
 				const channels = await channelSchema.find({})
 				if (!interaction.author.bot) interaction.delete()
 				for (const db of channels) {
 					try {
 						if (!interaction.author.bot) {
-							console.log(interaction)
 							const channnel = await client.channels.fetch(db.channelId);
 							const message = new EmbedBuilder()
 								.setTitle(`Hundy Global | ${interaction.author.username}`)
@@ -44,8 +42,7 @@ module.exports = {
 							await channnel.send({ embeds: [message]})
 						}
 					} catch (e) {
-						console.error(e)
-						//channelfunction.del(db.serverId)
+						
 					}
 				}
 			}

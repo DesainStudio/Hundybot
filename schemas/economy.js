@@ -6,9 +6,12 @@ let Schema = new mongoose.Schema({
     bank: Number,
     kredit: Number,
     sparbuch: Number,
+    bitcoin: Number,
+    abitcoin: Boolean,
+    mine: Number,
     banned: Boolean,
     update: Boolean,
     bugfix: Boolean
 })
 
-module.exports = mongoose.model('economy2', Schema)
+module.exports = mongoose.model('economy', Schema)

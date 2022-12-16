@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { EmbedBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -18,7 +18,7 @@ module.exports = {
 
         if (!!useroption) {
 
-            const usereconomy = await economy2.get(useroption.id);
+            const usereconomy = await economy.get(useroption.id);
 
             const message = new EmbedBuilder()
                 .setTitle(`Konto von ${useroption.username}`)
@@ -30,7 +30,7 @@ module.exports = {
 
         } else {
 
-            const usereconomy = await economy2.get(interaction.user.id)
+            const usereconomy = await economy.get(interaction.user.id)
 
             const message = new EmbedBuilder()
                 .setTitle(`Konto von ${interaction.user.username}`)
