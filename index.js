@@ -163,7 +163,7 @@ stdin.addListener("data", async function(input) {
 			economy.edt(db.userId, {
 				bitcoin: {
 					opt: "add",
-					val: 0.0006
+					val: 1
 				}
 			})
 
