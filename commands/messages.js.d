@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+;
 
 
 module.exports = {
@@ -16,9 +16,9 @@ module.exports = {
         let message = new EmbedBuilder()
         		.setTitle('Ping')
         		.setDescription(`Du hast ${messagesend} Nachrichten verschickt!`)
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [MESSAGES.JS]`);
+             [MESSAGES.JS]`);
 
             // Send Message
-            await interaction.reply({ embeds: [message]});
+            return interaction.reply({ embeds: [message]});
     },
 };

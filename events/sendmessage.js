@@ -1,7 +1,5 @@
 const channelSchema = require('../schemas/channel');
-const { Client, GatewayIntentBits } = require('discord.js');
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder } = require('discord.js')
 
 module.exports = {
 	name: 'SEND MESSAGE',
@@ -42,7 +40,7 @@ module.exports = {
 							await channnel.send({ embeds: [message]})
 						}
 					} catch (e) {
-						
+						global.channelopt.del(db.serverId)
 					}
 				}
 			}

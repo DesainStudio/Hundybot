@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,23 +14,23 @@ module.exports = {
 
         const username = interaction.user.username
         const userid = interaction.user.id
-        const authoreconomy = await economy.get(interaction.user.id)
+        const authoreconomy = await global.economyopt.get(interaction.user.id)
         const bitcoins = authoreconomy.bitcoin
         const user = interaction.options.getUser('user')
 
         if (!!user) {
 
-            const usereconomy = await economy.get(user.id)
+            const usereconomy = await global.economyopt.get(user.id)
 
             const message = new EmbedBuilder()
                 .setTitle(`Profil von ${user.username}`)
                 .setDescription(`Username: ${user.username} \n User ID: ${user.id} \n Bitcoins: ${usereconomy}`)
-            await interaction.reply({ embed: [message]})
+            return interaction.reply({ embed: [message]})
         } else {
             const message = new EmbedBuilder()
                 .setTitle(`Profil von ${username}`)
                 .setDescription(`Username: ${username} \n User ID: ${userid} \n Bitcoins: ${bitcoins}`)
-            await interaction.reply({ embeds: [message]})
+            return interaction.reply({ embeds: [message]})
         }
 
 

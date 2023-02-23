@@ -1,76 +1,81 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, Embed } = require('discord.js');
+const { execute } = require('./daily');
 
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('pay')
-    	.setDMPermission(false)
-        .setDescription('Gebe ein anderen User Geld')
-        .addUserOption(option =>
-            option.setName('user')
-                .setDescription('User')
-                .setRequired(true))
-                .addIntegerOption(option =>
-                    option.setName('bank')
-                        .setDescription('Betrag')
-                        .setRequired(true)),
-    async execute(interaction, client) {
+  data: new SlashCommandBuilder()
+    .setName('pay')
+    .setDescription('Pay oder Spende jemanden Coins')
+    .setDMPermission(false)
+    .addUserOption(option => option
+      .setName('user')
+      .setDescription('Wähle ein User')
+      .setRequired(true)  
+    )
+    .addIntegerOption(option => option
+      .setName('betrag')
+      .setDescription('Setze ein betrag')
+      .setRequired(true)  
+    ),
 
-        // Get Option User and Option bank
-        const user = interaction.options.getUser('user');
-        const optionbank = interaction.options.getInteger('bank');
+  async execute(interaction, client) {
+    // Get Options and Economys
+    const uoption = interaction.options.getUser('user')
+    const eoption = interaction.options.getInteger('betrag')
+    const ueconomy = await global.economyopt.get(interaction.user.id)
+    const eeconomy = await global.economyopt.get(uoption.id)
 
-        // Read bank
-        const usereconomy = await economy.get(interaction.user.id);
+    if (uoption.bot) {
+      const embed = new EmbedBuilder()
+        .setTitle('Fehler')
+        .setDescription('Du kannst keinen Bot Coins geben')
+      return interaction.reply({
+        embeds: [embed],
+        ephemeral: true
+      })
+    }
 
-        // Set bank and Bank
-        if (optionbank >= 0 && usereconomy.bank >= optionbank) {
-            if (interaction.user.id !== user.id) {
-                if (!user.bot) {
-                    economy.edt(interaction.user.id, {
-                        bank: {
-                            opt: "rem",
-                            val: optionbank
-                        }
-                    })
-                    economy.edt(user.id, {
-                        bank: {
-                            opt: "add",
-                            val: optionbank
-                        }
-                    })
+    if (ueconomy.bank < eoption) {
+      const embed = new EmbedBuilder()
+        .setTitle('Fehler')
+        .setDescription('Du hast nicht genug Coins')
+      return interaction.reply({
+        embeds: [embed],
+        ephemeral: true
+      })
+    }
 
-                    // Create Embed
-                    const message = new EmbedBuilder()
-                        .setTitle('Bezahlt')
-                        .setDescription(`Du hast ${user.username} ${optionbank} bezahlt!`)
-                    console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
-            
-                    // Send Message
-                    await interaction.reply({ embeds: [message]});
-                } else {
-                    const message = new EmbedBuilder()
-                        .setTitle('Fehler')
-                        .setDescription(`Du kannst keinen Bot was Payn!`)
-                    console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
-                    await interaction.reply({ embeds: [message]});
-                }
-            } else {
-                const message = new EmbedBuilder()
-                    .setTitle('Fehler')
-                    .setDescription(`Du kannst dir selber kein Geld payn!`)
-                console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
-                await interaction.reply({ embeds: [message]});
-            }
-        } else {
-            // Create Embed
-            const message = new EmbedBuilder()
-                .setTitle('Error')
-                .setDescription(`Du hast nicht genug auf der Bank um ${user.username} was zu bezahlen!`)
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [PAY.JS]`);
-            
-            // Send Message
-            await interaction.reply({ embeds: [message]});
-        }
-    },
-};
+    if (uoption === interaction.user.id) {
+      const embed = new EmbedBuilder()
+        .setTitle('Fehler')
+        .setDescription('Du kannst dir selber keine Coins geben')
+      return interaction.reply({
+        embeds: [embed],
+        ephemeral: true
+      })
+    }
+
+    global.economyopt.edt(interaction.user.id, {
+      bank: {
+        opt: 'rem',
+        val: eoption
+      }
+    })
+    global.economyopt.edt(uoption.id, {
+      money: {
+        opt: 'add',
+        val: eoption
+      }
+    })
+
+    // Create Embed
+    const embed = new EmbedBuilder()
+      .setTitle(`Pay to ${uoption.username}`)
+      .setDescription(`\`${interaction.user.username}\` hat dir \`${eoption}\` Coins gegeben`)
+
+    // Send message
+    return interaction.reply({
+      embeds: [embed],
+      ephemeral: false
+    })
+  }
+}

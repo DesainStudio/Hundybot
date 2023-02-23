@@ -1,0 +1,89 @@
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const channelSchema = require('../schemas/channel');
+
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName('globalchanneloption')
+    .setDescription('Setze/Lösch Global Channel')
+    .setDMPermission(false)
+    .addStringOption(option => option
+    .setName('sl')
+    .setDescription('Setzen/Löschen')
+    .addChoices(
+      {
+        name: 'Löschen',
+        value: 'löschen'
+      },
+      {
+        name: 'Setzen',
+        value: 'setzen'
+      }
+    )
+    .setRequired(true)
+  ),
+  
+  async execute(interaction, client) {
+
+    const ieconomy = interaction.options.getString('sl');
+    const channel = await channelSchema.findOne({
+      serverId: interaction.guild.id
+    });
+
+    if (ieconomy === "setzen") {
+      if (!channel) {
+        channelfunction.set(interaction.guild.id, interaction.channel.id)
+        const embed = new EmbedBuilder()
+          .setTitle('Global Kanal')
+          .setDescription('Dieser Kanal ist jetzt ein Global Kanal')
+        return interaction.reply({
+          embeds: [embed],
+          ephemeral: true
+        });
+      } else {
+        if (channel.channelId !== interaction.guild.id) {
+          const embed = new EmbedBuilder()
+            .setTitle('Fehler')
+            .setDescription('Auf diesen Server gibt es schon einen Global Kanal')
+          return interaction.reply({
+            embeds: [embed],
+            ephemeral: true
+          });
+        } else {
+          const embed = new EmbedBuilder()
+            .setTitle('Fehler')
+            .setDescription('Dieser Kanal ist schon ein Global Kanal')
+          return interaction.reply({
+            embeds: [embed],
+            ephemeral: true
+          });
+        };
+      };
+    } else if (ieconomy === "löschen") {
+      if (!!channel) {
+        if (channel.channelId === interaction.channel.id) {
+          channelfunction.del(interaction.guild.id)
+          const message = new EmbedBuilder()
+            .setTitle('Global Kanal Gelöscht')
+            .setDescription(`Dieser Kanal ist kein Global Kanal mehr`)
+          return interaction.reply({ embeds: [message] })
+        } else {
+          const embed = new EmbedBuilder()
+            .setTitle('Fehler')
+            .setDescription(`Der angegebene Kanal ist kein Global Kanal`)
+          return interaction.reply({
+            embeds: [embed],
+            ephemeral: true
+          });
+        };
+      } else {
+        const embed = new EmbedBuilder()
+          .setTitle('Fehler')
+          .setDescription('Auf diesen Server gibt es keinen Global Kanal')
+        return interaction.reply({
+          embeds: [embed],
+          ephemeral: true
+        });
+      };
+    }
+  },
+};

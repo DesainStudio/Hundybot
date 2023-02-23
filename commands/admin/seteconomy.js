@@ -1,7 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+;
 const { BaseClient, resolveColor } = require('discord.js');
-// const User = require('../schemas/UserSchema')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -26,38 +25,25 @@ module.exports = {
                                     // Setup Choices
                                     { name: 'Money', value: 'money'},
                                     { name: 'Bank', value: 'bank'},
+                                    { name: 'Sparbuch', value: 'sparbuch'}
                                 )
                             ),
     async execute(interaction, client) {
         if (interaction.user.id == '850387223819059260') {
+            
             // Get Option User and Option Money
             const user = interaction.options.getUser("user")
             const money = interaction.options.getInteger("money")
-            const economyoption = interaction.options.getString('economy');
+            const ieconomy = interaction.options.getString('economy')
+            const usereconomy = await global.economyopt.get(user.id)
 
-            // Set Money and Set Bank from other User
-            const req = new Map()
-            req.set(`${economyoption}`, money)
-            economy.set(user.id, req);
+            const economyjson = {}
+            economyjson[ieconomy] = {
+                opt: "set",
+                val: money
+            }
 
-            // Create Embed
-            const message = new EmbedBuilder()
-                .setTitle('Money was set')
-                .setDescription(`Money wurde von ${user.username} auf ${money} gesetzt!`)
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [SETVAR.JS]`);
-            
-            // Send Message
-            await interaction.reply({ embeds: [message]});
-        } else {
-
-            // Create Embed
-            const message = new EmbedBuilder()
-                .setTitle('Error')
-                .setDescription('Du bist nicht der Inhaber!')
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [SETVAR.JS]`);
-            
-            // Send Message
-            await interaction.reply({ embeds: [message]});
+            global.economyopt.edt(user.id, economyjson)
         }
     },
 };

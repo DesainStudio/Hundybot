@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -21,27 +21,27 @@ module.exports = {
             const message = new EmbedBuilder()
                 .setTitle(`Userinfo`)
                 .setDescription(`Username: ${useroption.username} \n \n User ID: ${useroption.id}`)
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [BAL.JS]`);
+            
             
             // Send Message
-            await interaction.reply({ embeds: [message.toJSON()]});
+            return interaction.reply({ embeds: [message.toJSON()]});
 
         } else {
 
             const message = new EmbedBuilder()
                 .setTitle(`Userinfo`)
                 .setDescription(`Username: ${interaction.user.username} \n \n User ID: ${interaction.user.id}`)
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [BAL.JS]`);
+            
             
             // Send Message
-            await interaction.reply({ embeds: [message.toJSON()]});
+            return interaction.reply({ embeds: [message.toJSON()]});
 
         }
     }
 }
 
-/*const { SlashCommandBuilder } = require('discord.js');
-const { EmbedBuilder } = require('discord.js');
+/*const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+;
 
 
 module.exports = {
@@ -62,9 +62,9 @@ module.exports = {
         const message = new EmbedBuilder()
             .setTitle(`User Info von ${user.username}`)
             .setDescription(`Username: ${interaction.user.username} \n \n User ID: ${interaction.user.id} \n \n Acc Erstellt: ${interaction.user.username}`)
-        console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [USERINFO.JS]`);
+         [USERINFO.JS]`);
 
         // Send Message
-        await interaction.reply({ embeds: [message]});
+        return interaction.reply({ embeds: [message]});
     },
 };*/

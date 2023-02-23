@@ -1,45 +1,44 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('bal')
-        .setDMPermission(false)
-        .setDescription('Sehe dein Konto an')
-        .addUserOption(option =>
-            option.setName('user')
-                .setDescription('THE USER')
-                .setRequired(false)
-                ),
-    async execute(interaction, client) {
+  data: new SlashCommandBuilder()
+    .setName('bal')
+    .setDescription('Sehe dein Konto')
+    .setDMPermission(false)
+    .addUserOption(option => option
+      .setName('user')
+      .setDescription('Wähle ein User')
+      .setRequired(false)  
+    ),
 
-        // Get User Option
-        const useroption = interaction.options.getUser('user');
+  async execute(interaction, client) {
+    // Get User Option
+    const userOption = interaction.options.getUser('user');
 
-        if (!!useroption) {
+    if (!userOption) {
+      // Get User Economy
+      const userEconomy = await global.economyopt.get(interaction.user.id);
 
-            const usereconomy = await economy.get(useroption.id);
+      // Create Embed
+      const embed = new EmbedBuilder()
+        .setTitle(`Bal von ${interaction.user.username}`)
+        .setDescription(`Money: \`${userEconomy.money}\` Coins \n \n Bank: \`${userEconomy.bank}\` Coins \n \n Sparbuch: \`${userEconomy.sparbuch}\` Coins \n \n Unternehmenskonto: \`${userEconomy.unternehmenskonto}\` Coins \n \n Total: \`${userEconomy.money + userEconomy.bank + userEconomy.sparbuch + userEconomy.unternehmenskonto}\` Coins`)
+      return interaction.reply({
+        embeds: [embed],
+        ephemeral: false
+      });
+    };
 
-            const message = new EmbedBuilder()
-                .setTitle(`Konto von ${useroption.username}`)
-                .setDescription(`Money: \n \n ${usereconomy.money} \n \n Bank: \n \n ${usereconomy.bank} \n \n Sparbuch: \n \n ${usereconomy.sparbuch} \n \n Kredit: \n \n ${usereconomy.kredit} \n \n Total: \n \n ${usereconomy.money + usereconomy.bank + usereconomy.kredit + usereconomy.sparbuch}`)
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [BAL.JS]`);
-            
-            // Send Message
-            await interaction.reply({ embeds: [message.toJSON()]});
+    // Get User Economy
+    const userEconomy = await global.economyopt.get(userOption.id);
 
-        } else {
-
-            const usereconomy = await economy.get(interaction.user.id)
-
-            const message = new EmbedBuilder()
-                .setTitle(`Konto von ${interaction.user.username}`)
-                .setDescription(`Money: \n \n ${usereconomy.money} \n \n Bank: \n \n ${usereconomy.bank} \n \n Sparbuch: \n \n ${usereconomy.sparbuch} \n \n Kredit: \n \n ${usereconomy.kredit} \n \n Total: \n \n ${usereconomy.money + usereconomy.bank + usereconomy.kredit + usereconomy.sparbuch}`)
-            console.log(`[HUNDY BOT] [i] [TIME] [${new Date().toLocaleTimeString('en-US', { hour12: false})}] [DATE] [${new Date().toLocaleDateString('de-EU', { hour12: false })}] [INF] [USED COMMAND] [BAL.JS]`);
-            
-            // Send Message
-            await interaction.reply({ embeds: [message.toJSON()]});
-
-        }
-    }
-}
+    // Create Embed
+    const embed = new EmbedBuilder()
+      .setTitle(`Bal from ${userOption.username}`)
+      .setDescription(`Money: \`${userEconomy.money}\` Coins \n \n Bank: \`${userEconomy.bank}\` Coins \n \n Sparbuch: \`${userEconomy.sparbuch}\` Coins \n \n Unternehmenskonto: \`${userEconomy.unternehmenskonto}\` Coins \n \n Total: \`${userEconomy.money + userEconomy.bank + userEconomy.sparbuch + userEconomy.unternehmenskonto}\` Coins`)
+    return interaction.reply({
+      embeds: [embed],
+      ephemeral: false
+    });
+  },
+};

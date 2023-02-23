@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Wallnom Bot</title>
+</head>
+<body>
+    <div id="topbar">
+        <div id="logo">
+            <logo>
+
+            </logo>
+        </div>
+        <div id="links">
+            <a href="#">Discord</a>
+            <a href="#">Bot Invite</a>
+            <a href="#">Andere Projekt</a>
+            <a href="#">Anmelden</a>
+        </div>
+    </div>
+    <main>
+        <div id="botcounts">
+            <h1 class="title">
+                Bot Counts
+            </h1>
+            <section>
+                <div>
+                <h1>
+                    Server Anzahl
+                </h1>
+                <p id="server-count">Laden...</p>
+                </div>
+                <div>
+                    <h1>
+                        Befehl Anzahl
+                    </h1>
+                    <p id="command-count">Laden...</p>
+                </div>
+                <div>
+                    <h1>
+                        Button Anzahl
+                    </h1>
+                    <p id="button-count">Laden...</p>
+                </div>
+                <div>
+                    <h1>
+                        Commit Anzahl
+                    </h1>
+                    <p id="commit-count">Laden...</p>
+                </div>
+            </section>
+        </div>
+        <div id="botinfos">
+            <h1 class="title">
+                Bot Informationen
+            </h1>
+            <section>
+                <div>
+                    <h1>
+                        CPU
+                    </h1>
+                    <p id="cpu">Laden...</p>
+                </div>
+                <div>
+                    <h1>
+                        RAM
+                    </h1>
+                    <p id="ram">Laden...</p>
+                </div>
+                <div>
+                    <h1>
+                        Uptime
+                    </h1>
+                    <p id="uptime">Laden...</p>
+                </div>
+                <div>
+                    <h1>
+                        Disk
+                    </h1>
+                    <p id="disk">Laden...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+<script>
+
+    fetch('/api/statistik').then( async(res) => {
+        try {
+            const data = await res.json()
+            document.getElementById('server-count').innerText = data.servers
+            document.getElementById('command-count').innerText = data.commands
+            document.getElementById('button-count').innerText = data.buttons
+            document.getElementById('commit-count').innerText = data.commits
+            document.getElementById('cpu').innerText = data.cpu + ' %'
+            document.getElementById('ram').innerText = data.ram +  ' MB'
+            document.getElementById('uptime').innerText = data.uptime
+            document.getElementById('disk').innerText = data.disk + ' MB'
+        } catch (e) {
+            console.error(e.message)
+            document.getElementById('server-count').innerText = "offline"
+            document.getElementById('command-count').innerText = "offline"
+            document.getElementById('button-count').innerText = "offline"
+            document.getElementById('commit-count').innerText = "offline"
+            document.getElementById('cpu').innerText = "offline"
+            document.getElementById('ram').innerText = "offline"
+            document.getElementById('uptime').innerText = "offline"
+            document.getElementById('disk').innerText = "offline"
+        }
+    })
+</script>
+</html>
