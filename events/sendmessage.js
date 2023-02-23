@@ -16,11 +16,31 @@ module.exports = {
 			await channel.send({ embeds: [message]})
 		}
 
-        const channel = await channelSchema.findOne({ serverId: interaction.guild.id })
+    const channel = await channelSchema.findOne({ serverId: interaction.guild.id })
+		if (interaction.author.bot) return;
 
-		if (!channel) {
-			
-		} else if (channel.channelId === interaction.channel.id) {
+		interaction.delete()
+
+		if(channel && channel.channelId === interaction.channel.id) {
+			const channels = await channelSchema.find({})
+			for (const db of channels) {
+				try {
+					const channnel = await client.channels.fetch(db.channelId);
+					const message = new EmbedBuilder()
+						.setTitle(`Hundy Global | ${interaction.author.username}`)
+						.setDescription(`\n ${interaction.content}`)
+						.setFooter({ text: 'Von Server: ' + interaction.guild.name })
+						.setThumbnail(interaction.author.displayAvatarURL({ format: 'ping'}))
+						// .setImage(interaction.guild.displayAvatarURL({ format: 'png' }))
+						.setImage(interaction.guild.icon)
+						
+					await channnel.send({ embeds: [message]})
+				} catch (e) {
+					global.channelopt.del(db.serverId)
+				}
+			}
+		}
+			/*if (channel.channelId === interaction.channel.id) {
 			if (channel.channelId !== interaction.channel.id) {
 				console.log('Kein Global channel')
 			} else {
@@ -29,22 +49,14 @@ module.exports = {
 				for (const db of channels) {
 					try {
 						if (!interaction.author.bot) {
-							const channnel = await client.channels.fetch(db.channelId);
-							const message = new EmbedBuilder()
-								.setTitle(`Hundy Global | ${interaction.author.username}`)
-								.setDescription(`\n ${interaction.content}`)
-								.setFooter({ text: 'Von Server: ' + interaction.guild.name })
-								.setThumbnail(interaction.author.displayAvatarURL({ format: 'ping'}))
-								// .setImage(interaction.guild.displayAvatarURL({ format: 'png' }))
-								.setImage(interaction.guild.icon)
-							await channnel.send({ embeds: [message]})
+							
 						}
 					} catch (e) {
 						global.channelopt.del(db.serverId)
 					}
 				}
 			}
-		}
+		}*/
 
 	},
 };
