@@ -23,6 +23,6 @@ module.exports = {
 
 
             // Send Message
-            return interaction.reply({ embeds: [message]});
+            await interaction.reply({ embeds: [message]});
     },
 };
