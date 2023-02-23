@@ -14,7 +14,7 @@ const utils = require('rjutils-collection');
 
 // MongoDB Functions
 global.economyopt = require("./functions/economy");
-global.itemsoipt = require('./functions/items');
+global.itemsopt = require('./functions/items');
 global.channelopt = require('./functions/channel');
 global.bumpopt = require('./functions/bump');
 
