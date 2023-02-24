@@ -1,8 +1,6 @@
 const channelSchema = require('../schemas/channel');
 
 const process = (option, total, value) => {
-  if (option === 'add') total += value
-  if (option === 'rem') total -= value
   if (option === 'set') total = value
 
   return total

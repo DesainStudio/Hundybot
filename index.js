@@ -17,6 +17,7 @@ global.economyopt = require("./functions/economy");
 global.itemsopt = require('./functions/items');
 global.channelopt = require('./functions/channel');
 global.bumpopt = require('./functions/bump');
+global.globaluseropt = require('./functions/globaluser');
 
 (async() => {
 
