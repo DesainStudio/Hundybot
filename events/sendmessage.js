@@ -19,44 +19,33 @@ module.exports = {
     const channel = await channelSchema.findOne({ serverId: interaction.guild.id })
 		if (interaction.author.bot) return;
 
-		interaction.delete()
-
 		if(channel && channel.channelId === interaction.channel.id) {
+			interaction.delete()
 			const channels = await channelSchema.find({})
+			const useropt = await global.globaluseropt.get(interaction.author.id)
+					global.globaluseropt.edt(interaction.author.id, {
+						userxp: {
+							opt: 'add',
+							val: useropt.xp * useropt.xpbooster
+						}
+					})
 			for (const db of channels) {
 				try {
 					const channnel = await client.channels.fetch(db.channelId);
 					const message = new EmbedBuilder()
-						.setTitle(`Hundy Global | ${interaction.author.username}`)
-						.setDescription(`\n ${interaction.content}`)
-						.setFooter({ text: 'Von Server: ' + interaction.guild.name })
+						.setTitle(`Wallnom Global`)
+						.setDescription(`User: ${interaction.author.username} \n \n ${interaction.content}`)
+						.setFooter({ text: 'Von Server: ' + interaction.guild.name + ' | XP: ' + useropt.userxp + ' | Level: ' + useropt.level})
 						.setThumbnail(interaction.author.displayAvatarURL({ format: 'ping'}))
 						// .setImage(interaction.guild.displayAvatarURL({ format: 'png' }))
 						.setImage(interaction.guild.icon)
 						
 					await channnel.send({ embeds: [message]})
 				} catch (e) {
+					console.error(e)
 					global.channelopt.del(db.serverId)
 				}
 			}
 		}
-			/*if (channel.channelId === interaction.channel.id) {
-			if (channel.channelId !== interaction.channel.id) {
-				console.log('Kein Global channel')
-			} else {
-				const channels = await channelSchema.find({})
-				if (!interaction.author.bot) interaction.delete()
-				for (const db of channels) {
-					try {
-						if (!interaction.author.bot) {
-							
-						}
-					} catch (e) {
-						global.channelopt.del(db.serverId)
-					}
-				}
-			}
-		}*/
-
 	},
 };
