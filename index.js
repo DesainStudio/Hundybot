@@ -92,14 +92,6 @@ global.globaluseropt = require('./functions/globaluser');
 				console.error(e)
 			}
 		}
-
-		// Execute Modal
-		if (interaction.customId === 'myModal') {
-			return interaction.reply({ content: 'Your submission was received successfully!' });
-			const papusername = interaction.fields.getTextInputValue('papusername');
-			const pappasswort = interaction.fields.getTextInputValue('pappasswort');
-			
-		}
 	});
 
 	// Console Commands
