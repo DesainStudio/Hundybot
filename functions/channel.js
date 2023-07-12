@@ -1,56 +1,42 @@
-const channelSchema = require('../schemas/channel');
+const channelModel = require('../models/channel');
 
 const process = (option, total, value) => {
-  if (option === 'set') total = value
+    if (option === 'add') total += value
+    if (option === 'rem') total -= value
+    if (option === 'set') total = value
 
-  return total
+    return total
 }
 
-exports.get = (serverId) => new Promise(async(ful) => {
-  channelSchema.findOne({ serverId }, async(err, data) => {
-    if (err) throw err;
-
-    if (!data) {
-      return ful({
-        "channelId": 0,
-        "banned": false,
-        "update": false,
-        "bugfix": false
-      })
+exports.get = async(serverId) => {
+    const data = await channelModel.findOne({ where: { serverId } })
+    if (!data?.serverId) {
+        return {
+            "channelId": 0
+        }
     } else {
-      return ful({
-        "channelId": data.channelId,
-        "banned": data.banned,
-        "update": data.update,
-        "bugfix": data.bugfix
-      })
+        return data
     }
-  })
-})
+}
 
 exports.edt = async(serverId, json) => {
-  channelSchema.findOne({ serverId }, async(err, data) => {
-    if (err) throw err;
-
-    if (!data) {
-      data = new channelSchema({
-        serverId,
-        channelId: ('channelId' in json) ? json.channelId.val: 0,
-        banned: ('banned' in json) ? json.banned.val: false,
-        update: ('update' in json) ? json.update.val: false,
-        bugfix: ('bugfix' in json) ? json.bugfix.val: false,
-      })
+    const data = await channelModel.findOne({ where: { serverId } })
+    if (!data?.serverId) {
+        return channelModel.create({
+            serverId,
+            channelId: ('channelId' in json) ? json.channelId.val : 0
+        })
     } else {
-      if ('channelId' in json) data.channelId = process(json.channelId.opt, data.channelId, json.channelId.val)
-      if ('banned' in json) data.banned = process(json.banned.opt, data.banned, json.banned.val)
-      if ('update' in json) data.update = process(json.update.opt, data.update, json.update.val)
-      if ('bugfix' in json) data.bugfix = process(json.bugfix.opt, data.bugfix, json.bugfix.val)
-    }
+        let newData = {}
+        if ('channelId' in json) newData.channelId = process(json.channelId.opt, data.channelId, json.channelId.val)
 
-    data.save()
-  })
+        return channelModel.update(newData, {
+            where: { serverId }
+        })
+    }
 }
 
-exports.del = async(serverId) => {
-  channelSchema.findOneAndDelete({ serverId }, async (err, data) => {}) 
+
+exports.del = (serverId) => {
+    return channelModel.destroy({ where: { serverId } })
 }

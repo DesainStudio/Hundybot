@@ -1,12 +1,11 @@
-const webserver = require('rjweb-server');
 const OAuth = require('discord-oauth2');
 const oAuth = new OAuth();
 const utils = require('rjutils-collection');
-const user = require('../../../functions/user')
+// const user = require('../../../functions/user')
 
 /** @type {import('rjweb-server/interfaces').CtrFile} */
 module.exports = {
-  method: webserver.types.get,
+  method: "GET",
   path: '/api/account/create',
 
   async code(ctr) {

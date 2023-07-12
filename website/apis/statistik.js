@@ -1,4 +1,3 @@
-const webserver = require('rjweb-server')
 const commitcount = require('git-commit-count')
 const apikey = "ptlc_mAoS4I7cP38ODbj1Ay1D2riKN";
 const serverId = "2391c092";
@@ -6,7 +5,7 @@ const axios = require('axios');
 
 /** @type {import('rjweb-server/interfaces').CtrFile} */
 module.exports = {
-  method: webserver.types.get,
+  method: "GET",
   path: '/api/statistik',
 
   async code(ctr) {

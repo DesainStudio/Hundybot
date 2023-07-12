@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
-const channelSchema = require('../../schemas/channel')
+const channelModel = require('../../models/channel')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -8,11 +8,11 @@ module.exports = {
     .setDMPermission(false),
 
   async execute(interaction, client) {
-    const channel = await channelSchema.findOne({ serverId: interaction.guild.id })
+    const channel = await channelModel.findAll({ serverId: interaction.guild.id })
     const serverId = interaction.guild.id
 
     if (channel) {
-      channelSchema.findOneAndDelete({ serverId }, async(err) => {})
+      channelModel.destroy({ where: { serverId } })
 
       // Create Embed
       const embed = new EmbedBuilder()

@@ -1,5 +1,7 @@
-const channelSchema = require('../schemas/channel');
+// const channelSchema = require('../schemas/channel');
 const { EmbedBuilder } = require('discord.js')
+const config = require('../config.json')
+const channelModel = require('../models/channel')
 
 module.exports = {
 	name: 'SEND MESSAGE',
@@ -16,12 +18,12 @@ module.exports = {
 			await channel.send({ embeds: [message]})
 		}
 
-    const channel = await channelSchema.findOne({ serverId: interaction.guild.id })
+    const channel = await channelModel.findOne({ where: { serverId: interaction.guild.id } })
 		if (interaction.author.bot) return;
 
 		if(channel && channel.channelId === interaction.channel.id) {
 			interaction.delete()
-			const channels = await channelSchema.find({})
+			const channels = await channelModel.findAll({})
 			const useropt = await global.globaluseropt.get(interaction.author.id)
 					global.globaluseropt.edt(interaction.author.id, {
 						userxp: {
@@ -46,6 +48,10 @@ module.exports = {
 					global.channelopt.del(db.serverId)
 				}
 			}
+		}
+
+		if (interaction.content === `<@${config.id}>`) {
+			
 		}
 	},
 };

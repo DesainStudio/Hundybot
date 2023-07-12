@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
-const channelSchema = require('../../schemas/channel')
+// const channelSchema = require('../../schemas/channel')
+const channelModel = require('../../models/channel')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -8,7 +9,7 @@ module.exports = {
     .setDMPermission(false),
 
   async execute(interaction, client) {
-    const channel = await channelSchema.findOne({ serverId: interaction.guild.id })
+    const channel = await channelModel.findAll({ serverId: interaction.guild.id })
 
     if (!channel) {
       global.channelopt.edt(interaction.guild.id, {

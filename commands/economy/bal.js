@@ -34,7 +34,7 @@ module.exports = {
 
     // Create Embed
     const embed = new EmbedBuilder()
-      .setTitle(`Bal from ${userOption.username}`)
+      .setTitle(`Bal von ${userOption.username}`)
       .setDescription(`Money: \`${userEconomy.money}\` Coins \n \n Bank: \`${userEconomy.bank}\` Coins \n \n Sparbuch: \`${userEconomy.sparbuch}\` Coins \n \n Unternehmenskonto: \`${userEconomy.unternehmenskonto}\` Coins \n \n Total: \`${userEconomy.money + userEconomy.bank + userEconomy.sparbuch + userEconomy.unternehmenskonto}\` Coins`)
     return interaction.reply({
       embeds: [embed],

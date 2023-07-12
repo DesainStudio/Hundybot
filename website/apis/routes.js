@@ -1,14 +1,12 @@
-const webserver = require('rjweb-server')
-
 /** @type {import('rjweb-server/interfaces').CtrFile} */
 module.exports = {
-  method: webserver.types.get,
+  method: "GET",
   path: '/api/routes',
 
   async code(ctr) {
     let routes = []
 
-    ctr['@'].routes.routes.forEach(route => {
+    ctr['@'].routes.forEach(route => {
         if (!route.path.startsWith('/api')) routes.push(route.path)
     });
 

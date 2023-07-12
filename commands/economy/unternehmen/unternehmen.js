@@ -22,14 +22,24 @@ module.exports = {
     const name = interaction.options.getString('unternehmensname')
     const grund = interaction.options.getString('grund')
 
-    if (unternehmen.unternehmen === true) {
+    if (unternehmen.unternehmen === false) {
 
       let row = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
           .setLabel('annehmen')
-          .setCustomId(interaction.user.id)
-          .setStyle(ButtonStyle.Primary),
+          .setCustomId(JSON.stringify({
+            "name": "unternehmen-annehmen",
+            "value": interaction.user.id
+          }))
+          .setStyle(ButtonStyle.Success),
+        new ButtonBuilder()
+          .setLabel('ablehnen')
+          .setCustomId(JSON.stringify({
+            "name": "unternehmen-ablehnen",
+            "value": interaction.user.id
+          }))
+          .setStyle(ButtonStyle.Danger)
       )
 
       const embed = new EmbedBuilder()

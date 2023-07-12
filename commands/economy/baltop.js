@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const economySchema = require('../../schemas/economy')
+const economyModel = require('../../models/economy')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -13,7 +13,7 @@ module.exports = {
     await interaction.deferReply()
 
         let embeddesk = ''; let count = 0
-        const usereconomy = await economySchema.find({})
+        const usereconomy = await economyModel.findAll({})
         usereconomy.sort((first, second) => {
             return second.money - first.money
         })

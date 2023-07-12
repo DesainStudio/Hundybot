@@ -1,0 +1,11 @@
+.einstellung {
+  z-index: 500;
+  position: absolute;
+  top: 90px;
+  right: 20px;
+}
+.einstellung {
+  background-color: transparent;
+  font-size: larger;
+  cursor: pointer;
+}
